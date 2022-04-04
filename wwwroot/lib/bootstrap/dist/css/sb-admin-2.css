@@ -67,6 +67,7 @@ body {
   color: #858796;
   text-align: left;
   background-color: #fff;
+  /*background-image:url("~/img/Traffic.jpg");*/
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -436,6 +437,11 @@ mark,
 .mark {
   padding: 0.2em;
   background-color: #fcf8e3;
+}
+
+.mask-custom {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0,0,0,0.6);
 }
 
 .list-unstyled {

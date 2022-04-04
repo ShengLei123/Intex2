@@ -4,14 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Intex II</title>
-    <link href="~/lib/bootstrap/dist/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/sb-admin-2.css" rel="stylesheet" />
 </head>
 <body id="page-top">
-
-    <!-- Page Wrapper -->
+    
     <div id="wrapper">
         <!-- Sidebar - Brand -->
-        
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Sidebar -->
@@ -22,7 +20,7 @@
                     <div class="sidebar-brand-text mx-3">Team 4-2</div>
                 </a>
             </li>
-            
+
             <li class="nav-item active">
                 <a class="nav-link" asp-controller="Home" asp-action="Analytics">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -35,26 +33,25 @@
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                
+            <div class="justify-content-center align-items-center h-100" style="background-image: url(https://www.history.com/.image/t_share/MTg0NTg4OTc1MDYxNjA3OTEx/interstate-highway-gettyimages-1318535229.jpg); height: 100%; background-size: cover;">
+               
                 @RenderBody()
                 
             </div>
-            
         </div>
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
+        <!-- Footer -->
+        @*<footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-            <!-- End of Content Wrapper -->
+            </div>
+        </footer>*@
+        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
-        </div>
+    </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -63,7 +60,7 @@
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+            aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -80,5 +77,8 @@
             </div>
         </div>
     </div>
+    
+    <!-- Page Wrapper -->
+    
 </body>
 </html>
