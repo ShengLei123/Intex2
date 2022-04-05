@@ -11,7 +11,11 @@ namespace Intex2.Controllers
 {
     public class HomeController : Controller
     {
-        
+        private ICrashRepository _repo { get; set; }
+        public HomeController (ICrashRepository temp)
+        {
+            _repo = temp;
+        }
 
         public IActionResult Index()
         {
@@ -20,6 +24,9 @@ namespace Intex2.Controllers
 
         public IActionResult Analytics()
         {
+            var blah = _repo.Utah_Crash.ToList();
+            ViewData["Total_Num_Records"] = blah.Count();
+
             return View();
         }
         public IActionResult Privacy()
