@@ -28,28 +28,43 @@ namespace Intex2.Controllers
             var crash_list = _repo.Utah_Crash.ToList();
             double total_count = crash_list.Count();
 
+            // Get Year
             var unique_year = new List<int>();
             var raw_date_list = _repo.Utah_Crash
                 .Select(x => x.CRASH_DATETIME)
                 .OrderBy(x => x)
                 .ToList();
+            var min_date_list = new List<DateTime>();
+            var min_date_list_percent = new List<string>();
+            var min_date_list_int = new List<double>();
             foreach (DateTime d in raw_date_list)
             {
                 unique_year.Add(d.Year);
             }
             unique_year = unique_year.Distinct().ToList();
-
+            foreach (int y in unique_year)
+            {
+                var temp_min_year = raw_date_list.FindAll(x => x.Value.Year == y).ToList();
+                double temp_year_count = temp_min_year.Count();
+                double temp_year_count_percent = temp_year_count / total_count;
+                min_date_list_percent.Add(temp_year_count_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty));
+                min_date_list_int.Add(Math.Round(temp_year_count_percent * 100, 0, MidpointRounding.AwayFromZero));
+                min_date_list.Add((DateTime)temp_min_year.Min());
+            }
+            var year_view = unique_year.Zip(min_date_list, (n, w) => new { Number = n, Word = w }); 
+            
+            //Get County
             var salt_lake_county = crash_list.FindAll(x => x.COUNTY_NAME == "SALT LAKE");
             double salt_lake_count = salt_lake_county.Count();
             double salt_lake_percent = salt_lake_count / total_count;
 
+            // Get Severity
             var severity_list = _repo.Utah_Crash
                 .Select(x => x.CRASH_SEVERITY_ID)
                 .OrderBy(x => x)
                 .ToList();
             double severity_sum = (double)crash_list.Sum(x => x.CRASH_SEVERITY_ID);
             double severity_ave = severity_sum / total_count;
-            
             double serverity_1 = 0;
             double serverity_2 = 0;
             double serverity_3 = 0;
@@ -84,8 +99,11 @@ namespace Intex2.Controllers
             double serverity_4_percent = serverity_4 / total_count;
             double serverity_5_percent = serverity_5 / total_count;
 
+            
+
             ViewData["Total_Num_Records"] = crash_list.Count();
-            ViewData["Salt_Lake_Percent"] = salt_lake_percent.ToString("P1", CultureInfo.InvariantCulture);
+            ViewData["Salt_Lake_Percent"] = salt_lake_percent.ToString("P0", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewData["Salt_Lake_Int"] = Math.Round(salt_lake_percent * 100, 0, MidpointRounding.AwayFromZero);
             ViewData["Average_Severity"] = Math.Round(severity_ave, 1, MidpointRounding.AwayFromZero);
             ViewData["Begin_Year"] = unique_year.Min();
             ViewData["End_Year"] = unique_year.Max();
@@ -99,6 +117,11 @@ namespace Intex2.Controllers
             ViewData["Severity_3_Int"] = Math.Round(serverity_3_percent * 100, 0, MidpointRounding.AwayFromZero);
             ViewData["Severity_4_Int"] = Math.Round(serverity_4_percent * 100, 0, MidpointRounding.AwayFromZero);
             ViewData["Severity_5_Int"] = Math.Round(serverity_5_percent * 100, 0, MidpointRounding.AwayFromZero);
+            ViewBag.Unique_Year = unique_year;
+            ViewBag.Min_Date_List_Percent = min_date_list_percent;
+            ViewBag.Min_Date_List_Int = min_date_list_int;
+            ViewBag.Min_Date_List = min_date_list;
+            
 
             return View();
         }

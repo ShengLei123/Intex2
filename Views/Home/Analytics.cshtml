@@ -74,7 +74,7 @@
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -93,11 +93,11 @@
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Time Period
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewData["Begin_Year"] - @ViewData["End_Year"]</div>
@@ -112,11 +112,11 @@
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Salt Lake County
                             </div>
                             <div class="row no-gutters align-items-center">
@@ -125,9 +125,9 @@
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar"
-                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-primary" role="progressbar"
+                                             style="width: @ViewData["Salt_Lake_Percent"]" aria-valuenow="@ViewData["Salt_Lake_Int"]" aria-valuemin="0"
+                                             aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -142,11 +142,11 @@
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Average Crash Severity 
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewData["Average_Severity"]</div>
@@ -256,7 +256,7 @@
                                     </h4>
 
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: @ViewData["Severity_1_Percent"]"
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewData["Severity_1_Percent"]"
                                              aria-valuenow="@ViewData["Severity_1_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@
                                 </h4>
 
                                 <div class="progress mb-4">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: @ViewData["Severity_2_Percent"]"
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewData["Severity_2_Percent"]"
                                          aria-valuenow="@ViewData["Severity_2_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@
                                 </h4>
 
                                 <div class="progress mb-4">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: @ViewData["Severity_3_Percent"]"
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewData["Severity_3_Percent"]"
                                          aria-valuenow="@ViewData["Severity_3_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -300,7 +300,7 @@
                                 </h4>
 
                                 <div class="progress mb-4">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: @ViewData["Severity_4_Percent"]"
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewData["Severity_4_Percent"]"
                                          aria-valuenow="@ViewData["Severity_4_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -318,31 +318,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-                        @*<h4 class="small font-weight-bold">
-            Customer Database <span class="float-right">60%</span>
-        </h4>
-        <div class="progress mb-4">
-            <div class="progress-bar" role="progressbar" style="width: 60%"
-                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">
-            Payout Details <span class="float-right">80%</span>
-        </h4>
-        <div class="progress mb-4">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h4 class="small font-weight-bold">
-            Account Setup <span class="float-right">Complete!</span>
-        </h4>
-
-                        <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>*@
                     </div>
                 </div>
 
@@ -421,23 +396,125 @@
                 <!-- Illustrations -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Crash Year Distribution</h6>
                     </div>
                     <div class="card-body">
-                        <div class="text-center">
-                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                 src="img/undraw_posting_photo.svg" alt="...">
+                        <div class="row">
+                            <input type="radio" value="@ViewBag.Min_Date_List[0]" asp-for="CRASH_DATETIME" class="mt-3" />
+                            <div class="col-sm-11 justify-content-end">
+                                <h4 class="small font-weight-bold">
+                                    @ViewBag.Unique_Year[0]<span class="float-right">@ViewBag.Min_Date_List_Percent[0]</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[0]"
+                                         aria-valuenow="@ViewBag.Min_Date_List_Int[0]" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <br />
                         </div>
-                        <p>
-                            Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                            constantly updated collection of beautiful svg images that you can use
-                            completely free and without attribution!
-                        </p>
-                        <a target="_blank" rel="nofollow" href="https://undraw.co/">
-                            Browse Illustrations on
-                            unDraw &rarr;
-                        </a>
+                        <div class="row">
+                            <input type="radio" value="@ViewBag.Min_Date_List[1]" asp-for="CRASH_DATETIME" class="mt-3" />
+                            <div class="col-sm-11 justify-content-end">
+                                <h4 class="small font-weight-bold">
+                                    @ViewBag.Unique_Year[1]<span class="float-right">@ViewBag.Min_Date_List_Percent[1]</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[1]"
+                                         aria-valuenow="@ViewBag.Min_Date_List_Int[1]" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <input type="radio" value="@ViewBag.Min_Date_List[2]" asp-for="CRASH_DATETIME" class="mt-3" />
+                            <div class="col-sm-11 justify-content-end">
+                                <h4 class="small font-weight-bold">
+                                    @ViewBag.Unique_Year[2]<span class="float-right">@ViewBag.Min_Date_List_Percent[2]</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[2]"
+                                         aria-valuenow="@ViewBag.Min_Date_List_Int[2]" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <input type="radio" value="@ViewBag.Min_Date_List[3]" asp-for="CRASH_DATETIME" class="mt-3" />
+                            <div class="col-sm-11 justify-content-end">
+                                <h4 class="small font-weight-bold">
+                                    @ViewBag.Unique_Year[3]<span class="float-right">@ViewBag.Min_Date_List_Percent[3]</span>
+                                </h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[3]"
+                                         aria-valuenow="@ViewBag.Min_Date_List_Int[3]" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+
+
+
+
+
+                        @*<div class="row">
+            <input type="radio" value="2016-12-31T23:59" asp-for="CRASH_DATETIME" class="mt-3" />
+            <div class="col-sm-11 justify-content-end">
+                <h4 class="small font-weight-bold">
+                    Crash Severity ID 2<span class="float-right">@ViewData["Severity_2_Percent"]</span>
+                </h4>
+
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: @ViewData["Severity_2_Percent"]"
+                         aria-valuenow="@ViewData["Severity_2_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            </label>
+            <br />
+        </div>
+        <div class="row">
+            <input type="radio" value="3" asp-for="CRASH_SEVERITY_ID" class="mt-3" />
+            <div class="col-sm-11 justify-content-end">
+                <h4 class="small font-weight-bold">
+                    Crash Severity ID 3<span class="float-right">@ViewData["Severity_3_Percent"]</span>
+                </h4>
+
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: @ViewData["Severity_3_Percent"]"
+                         aria-valuenow="@ViewData["Severity_3_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <br />
+        </div>
+        <div class="row">
+            <input type="radio" value="4" asp-for="CRASH_SEVERITY_ID" class="mt-3" />
+            <div class="col-sm-11 justify-content-end">
+                <h4 class="small font-weight-bold">
+                    Crash Severity ID 4<span class="float-right">@ViewData["Severity_4_Percent"]</span>
+                </h4>
+
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: @ViewData["Severity_4_Percent"]"
+                         aria-valuenow="@ViewData["Severity_4_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>*@
+
                     </div>
+                    @*<div class="card-body">
+            <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                     src="img/undraw_posting_photo.svg" alt="...">
+            </div>
+            <p>
+                Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                constantly updated collection of beautiful svg images that you can use
+                completely free and without attribution!
+            </p>
+            <a target="_blank" rel="nofollow" href="https://undraw.co/">
+                Browse Illustrations on
+                unDraw &rarr;
+            </a>
+        </div>*@
                 </div>
 
                 <!-- Approach -->
