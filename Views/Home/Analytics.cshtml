@@ -245,73 +245,76 @@
                 <!-- Project Card Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Crash Severity Distribution</h6>
                     </div>
                     <div class="card-body">
-                        <div class="row justify-content-center">
-                            
-                            <input type="radio" value="1" asp-for="CRASH_SEVERITY_ID" />                          
-                            <div class="col-sm-9 justify-content-end">
+                        <div class="row">
+                            <input type="radio" value="1" asp-for="CRASH_SEVERITY_ID" class="mt-3"/>
+                                <div class="col-sm-11 justify-content-end">
+                                    <h4 class="small font-weight-bold">
+                                        Crash Severity ID 1<span class="float-right">@ViewData["Severity_1_Percent"]</span>
+                                    </h4>
+
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: @ViewData["Severity_1_Percent"]"
+                                             aria-valuenow="@ViewData["Severity_1_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </label>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <input type="radio" value="2" asp-for="CRASH_SEVERITY_ID" class="mt-3"/>
+                            <div class="col-sm-11 justify-content-end">
                                 <h4 class="small font-weight-bold">
-                                    Crash Severity ID 1<span class="float-right">20%</span>
+                                    Crash Severity ID 2<span class="float-right">@ViewData["Severity_2_Percent"]</span>
                                 </h4>
 
                                 <div class="progress mb-4">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 20%"
-                                         aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: @ViewData["Severity_2_Percent"]"
+                                         aria-valuenow="@ViewData["Severity_2_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            </label>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <input type="radio" value="3" asp-for="CRASH_SEVERITY_ID" class="mt-3"/>                           
+                            <div class="col-sm-11 justify-content-end">
+                                <h4 class="small font-weight-bold">
+                                    Crash Severity ID 3<span class="float-right">@ViewData["Severity_3_Percent"]</span>
+                                </h4>
+
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: @ViewData["Severity_3_Percent"]"
+                                         aria-valuenow="@ViewData["Severity_3_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <br />
                         </div>
-                        <div class="row justify-content-center">
-                            <input type="radio" value="2" asp-for="CRASH_SEVERITY_ID" />
-                            <div class="col-sm-9 justify-content-end">
+                        <div class="row">
+                            <input type="radio" value="4" asp-for="CRASH_SEVERITY_ID"  class="mt-3"/>
+                            <div class="col-sm-11 justify-content-end">
                                 <h4 class="small font-weight-bold">
-                                    Crash Severity ID 2<span class="float-right">40%</span>
+                                    Crash Severity ID 4<span class="float-right">@ViewData["Severity_4_Percent"]</span>
                                 </h4>
 
                                 <div class="progress mb-4">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 40%"
-                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: @ViewData["Severity_4_Percent"]"
+                                         aria-valuenow="@ViewData["Severity_4_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <input type="radio" value="3" asp-for="CRASH_SEVERITY_ID" />
-                            <div class="col-sm-9 justify-content-end">
+                        <div class="row">
+                            <input type="radio" value="5" asp-for="CRASH_SEVERITY_ID"  class="mt-3"/>
+                            <div class="col-sm-11 justify-content-end">
                                 <h4 class="small font-weight-bold">
-                                    Crash Severity ID 3<span class="float-right">40%</span>
+                                    Crash Severity ID 5<span class="float-right">@ViewData["Severity_5_Percent"]</span>
                                 </h4>
 
                                 <div class="progress mb-4">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%"
-                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <input type="radio" value="4" asp-for="CRASH_SEVERITY_ID" />
-                            <div class="col-sm-9 justify-content-end">
-                                <h4 class="small font-weight-bold">
-                                    Crash Severity ID 4<span class="float-right">40%</span>
-                                </h4>
-
-                                <div class="progress mb-4">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <input type="radio" value="5" asp-for="CRASH_SEVERITY_ID" />
-                            <div class="col-sm-9 justify-content-end">
-                                <h4 class="small font-weight-bold">
-                                    Crash Severity ID 5<span class="float-right">40%</span>
-                                </h4>
-
-                                <div class="progress mb-4">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 40%"
-                                         aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewData["Severity_5_Percent"]"
+                                         aria-valuenow="@ViewData["Severity_5_Int"]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>

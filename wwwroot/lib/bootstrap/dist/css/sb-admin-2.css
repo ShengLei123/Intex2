@@ -297,6 +297,7 @@ input[type="radio"]{
 input[type="radio"]:checked + div{
     border:3px dotted #e75d50;
     padding: 1px;
+    margin: 2px;
 }
 
 input[type="radio"],
