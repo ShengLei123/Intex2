@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace Intex2.Models
 {
@@ -39,5 +40,17 @@ namespace Intex2.Models
         public bool? DISTRACTED_DRIVING { get; set; }
         public bool? DROWSY_DRIVING { get; set; }
         public bool? ROADWAY_DEPARTURE { get; set; }
+
+        public Tensor<float?> AsTensor()
+        {
+            float?[] data = new float?[]
+            {
+                MILEPOINT, LAT_UTM_Y, LONG_UTM_X
+            };
+            int[] dimensions = new int[] { 1, 3 };
+
+            return new DenseTensor<float?>(data, dimensions);
+        }
+
     }
 }
