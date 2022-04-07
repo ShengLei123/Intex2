@@ -6,7 +6,18 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Admin Page";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if(ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
 }
+
 @model List<Utah_Crash>
 
 <div class="bg-dark text-white p-2">
@@ -49,3 +60,38 @@
 
 <a asp-controller="Home" asp-action="AddAccident" class="btn bg-success col-lg text-white mb-5">Add an Accident Record</a>
 
+<div class="container">
+    @if (pager.TotalPages > 0)
+        {
+    <ul class="pagination justify-content-end">
+
+        @if (pager.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="Home" asp-action="Accidents" asp-route-pg="1">First</a>
+            </li>
+            <li>
+                <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-pg="@(pager.CurrentPage -1)">Previous</a>
+            </li>
+        } 
+
+
+        @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+        {
+            <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                <a class="page-link" asp-controller="Home" asp-action="Accidents" asp-route-pg="@pge">@pge</a>
+            </li>
+        }
+
+        @if (pager.CurrentPage < pager.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="Home" asp-action="Accidents" asp-route-pg="@(pager.CurrentPage  + 1)">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" asp-controller="Home" asp-action="Accidents" asp-route-pg="@(pager.TotalPages)">Last</a>
+            </li>
+        }
+    </ul>
+        }
+</div>
