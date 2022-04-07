@@ -57,6 +57,7 @@ namespace Intex2.Controllers
             var salt_lake_county = crash_list.FindAll(x => x.COUNTY_NAME == "SALT LAKE");
             double salt_lake_count = salt_lake_county.Count();
             double salt_lake_percent = salt_lake_count / total_count;
+            var unique_county = crash_list.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x).ToList();
 
             // Get Severity
             var severity_list = _repo.Utah_Crash
@@ -145,6 +146,8 @@ namespace Intex2.Controllers
             ViewData["Distracted_Driving"] = distracted_driving_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
             ViewData["Wild_Animal"] = wild_animal_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
             ViewData["Drowsy_Driving"] = drowsy_driving_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewBag.Unique_County = unique_county;
+
             return View();
         }
 
