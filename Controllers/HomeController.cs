@@ -168,7 +168,6 @@ namespace Intex2.Controllers
         public IActionResult Output(Utah_Crash c)
         {
             var crash_list = _repo.Utah_Crash.ToList();
-            
 
             if (c.CRASH_SEVERITY_ID != null)
             {
