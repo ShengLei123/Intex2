@@ -83,6 +83,9 @@ namespace Intex2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{crashId?}");
             });
 
             IdentitySeedData.EnsurePopulated(app);

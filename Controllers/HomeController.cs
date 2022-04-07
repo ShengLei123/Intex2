@@ -181,5 +181,48 @@ namespace Intex2.Controllers
             return View(blah);
         }
 
+        [HttpGet]
+        public IActionResult AddAccident()
+        {
+            var blah = _repo.Utah_Crash.Select(x => x.CRASH_ID);
+
+            var hah = new Utah_Crash
+            {
+                CRASH_ID = blah.Max() + 1
+            };
+
+            return View("AccidentForm", hah);
+        }
+
+        [HttpPost]
+        public IActionResult AddAccident(Utah_Crash c)
+        {
+            var blah = _repo.Utah_Crash.Select(x => x.CRASH_ID);
+
+            if (blah.Contains(c.CRASH_ID))
+            {
+                _repo.SaveAccident(c);
+            }
+            else
+            {
+                _repo.CreateAccident(c);
+            }
+
+            return RedirectToAction("Accidents");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var blah = _repo.Utah_Crash.Where(x => x.CRASH_ID == id).FirstOrDefault();
+            return View("AccidentForm", blah);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var blah = _repo.Utah_Crash.Where(x => x.CRASH_ID == id).FirstOrDefault();
+            _repo.DeleteAccident(blah);
+            return RedirectToAction("Accidents");
+        }
     }
 }
