@@ -43,8 +43,10 @@ namespace Intex2
            });
 
             services.AddDbContext<AppIdentityDBContext>(options =>
-                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]));
-
+            { 
+                options.UseMySql(Configuration["ConnectionStrings:IdentityConnection"]);
+            });
+        
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDBContext>();
 
@@ -80,6 +82,8 @@ namespace Intex2
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
