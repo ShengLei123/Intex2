@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Admin Page";
+}
+@model List<Utah_Crash>
+
+
+<h1>Admin</h1>
+
+@foreach (var c in Model)
+{
+    @*<li></li>*@
+
+
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-light p-1">
+            <h4>
+                ID: @c.CRASH_ID
+            </h4>
+        </div>
+        <div class="card-text p-1">@c.CRASH_DATETIME</div>
+
+        <ul>
+            <li>Severity Level (1-5): @c.CRASH_SEVERITY_ID</li>
+            <li>City: @c.CITY</li>
+            <li>County: @c.COUNTY_NAME</li>
+            <li>Road: @c.MAIN_ROAD_NAME</li>
+        </ul>
+    </div>
+}
+

@@ -40,7 +40,7 @@ namespace Intex2.Controllers
 
                     if ((await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false)).Succeeded)
                     {
-                        return Redirect(loginModel?.ReturnUrl ?? "/admin");
+                        return Redirect(loginModel?.ReturnUrl ?? "/Accidents");
                     }
                 }
             }
