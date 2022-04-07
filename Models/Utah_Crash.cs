@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace Intex2.Models
 {
@@ -20,24 +21,39 @@ namespace Intex2.Models
         public string? CITY { get; set; }
         public string? COUNTY_NAME { get; set; }
         public int? CRASH_SEVERITY_ID { get; set; }
-        public bool? WORK_ZONE_RELATED { get; set; }
-        public bool? PEDESTRIAN_INVOLVED { get; set; }
-        public bool? BICYCLIST_INVOLVED { get; set; }
-        public bool? MOTORCYCLE_INVOLVED { get; set; }
-        public bool? IMPROPER_RESTRAINT { get; set; }
-        public bool? UNRESTRAINED { get; set; }
-        public bool? DUI { get; set; }
-        public bool? INTERSECTION_RELATED { get; set; }
-        public bool? WILD_ANIMAL_RELATED { get; set; }
-        public bool? DOMESTIC_ANIMAL_RELATED { get; set; }
-        public bool? OVERTURN_ROLLOVER { get; set; }
-        public bool? COMMERCIAL_MOTOR_VEH_INVOLVED { get; set; }
-        public bool? TEENAGE_DRIVER_INVOLVED { get; set; }
-        public bool? OLDER_DRIVER_INVOLVED { get; set; }
-        public bool? NIGHT_DARK_CONDITION { get; set; }
-        public bool? SINGLE_VEHICLE { get; set; }
-        public bool? DISTRACTED_DRIVING { get; set; }
-        public bool? DROWSY_DRIVING { get; set; }
-        public bool? ROADWAY_DEPARTURE { get; set; }
+        public float? WORK_ZONE_RELATED { get; set; }
+        public float? PEDESTRIAN_INVOLVED { get; set; }
+        public float? BICYCLIST_INVOLVED { get; set; }
+        public float? MOTORCYCLE_INVOLVED { get; set; }
+        public float? IMPROPER_RESTRAINT { get; set; }
+        public float? UNRESTRAINED { get; set; }
+        public float? DUI { get; set; }
+        public float? INTERSECTION_RELATED { get; set; }
+        public float? WILD_ANIMAL_RELATED { get; set; }
+        public float? DOMESTIC_ANIMAL_RELATED { get; set; }
+        public float? OVERTURN_ROLLOVER { get; set; }
+        public float? COMMERCIAL_MOTOR_VEH_INVOLVED { get; set; }
+        public float? TEENAGE_DRIVER_INVOLVED { get; set; }
+        public float? OLDER_DRIVER_INVOLVED { get; set; }
+        public float? NIGHT_DARK_CONDITION { get; set; }
+        public float? SINGLE_VEHICLE { get; set; }
+        public float? DISTRACTED_DRIVING { get; set; }
+        public float? DROWSY_DRIVING { get; set; }
+        public float? ROADWAY_DEPARTURE { get; set; }
+
+        public Tensor<float?> AsTensor()
+        {
+            float?[] data = new float?[]
+            {
+                MILEPOINT, LAT_UTM_Y, LONG_UTM_X, WORK_ZONE_RELATED, UNRESTRAINED, DUI,
+                INTERSECTION_RELATED, WILD_ANIMAL_RELATED, OVERTURN_ROLLOVER, COMMERCIAL_MOTOR_VEH_INVOLVED,
+                TEENAGE_DRIVER_INVOLVED, OLDER_DRIVER_INVOLVED, NIGHT_DARK_CONDITION, SINGLE_VEHICLE,
+                DISTRACTED_DRIVING, ROADWAY_DEPARTURE, CRASH_SEVERITY_ID
+            };
+
+            int[] dimensions = new int[] { 1, 17 };
+
+            return new DenseTensor<float?>(data, dimensions);
+        }
     }
 }

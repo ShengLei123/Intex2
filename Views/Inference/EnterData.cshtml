@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Data Entry";
+}
+
+@model Utah_Crash
+
+<div class="center">
+    <form method="post" asp-controller="Inference" asp-action="Crash">
+
+        @*<div><label>Age:</label><input asp-for="Age" value="25" /></div>*@
+
+        <button type="submit">Calculate</button>
+    </form>
+
+</div>
