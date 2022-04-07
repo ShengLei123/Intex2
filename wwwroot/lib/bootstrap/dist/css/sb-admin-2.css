@@ -4215,7 +4215,7 @@ input[type="radio"] {
 }
 
 .navbar-nav-scroll {
-  max-height: 75vh;
+  max-height: 25rem;
   overflow-y: auto;
 }
 
