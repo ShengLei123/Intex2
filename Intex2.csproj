@@ -8,10 +8,12 @@
     <Folder Include="wwwroot\img\" />
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\Inference\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.23" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.11.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.22" />
@@ -27,5 +29,6 @@
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Models\ViewModels\" />
     <None Remove="Views\Account\" />
+    <None Remove="Views\Inference\" />
   </ItemGroup>
 </Project>

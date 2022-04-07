@@ -1,4 +1,5 @@
 ﻿using Intex2.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -167,9 +168,18 @@ namespace Intex2.Controllers
         {
             return View();
         }
+
         public IActionResult Privacy()
         {
             return View();
         }
+
+        [Authorize]
+        public IActionResult Accidents()
+        {
+            var blah = _repo.Utah_Crash.Take(10).ToList();
+            return View(blah);
+        }
+
     }
 }
