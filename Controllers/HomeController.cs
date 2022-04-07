@@ -99,7 +99,25 @@ namespace Intex2.Controllers
             double serverity_4_percent = serverity_4 / total_count;
             double serverity_5_percent = serverity_5 / total_count;
 
-            
+            //Get Tags
+            var intersection_related_list = crash_list.FindAll(x => x.INTERSECTION_RELATED == true).ToList();
+            double intersection_related_count = intersection_related_list.Count();
+            var night_dark_condition_list = crash_list.FindAll(x => x.NIGHT_DARK_CONDITION == true).ToList();
+            double night_dark_condition_count = night_dark_condition_list.Count();
+            var roadway_departure_list = crash_list.FindAll(x => x.ROADWAY_DEPARTURE == true).ToList();
+            double roadway_departure_count = roadway_departure_list.Count();
+            var distracted_driving_list = crash_list.FindAll(x => x.DISTRACTED_DRIVING == true).ToList();
+            double distracted_driving_count = distracted_driving_list.Count();
+            var wild_animal_list = crash_list.FindAll(x => x.WILD_ANIMAL_RELATED == true).ToList();
+            double wild_animal_count = wild_animal_list.Count();
+            var drowsy_driving_list = crash_list.FindAll(x => x.DROWSY_DRIVING == true).ToList();
+            double drowsy_driving_count = drowsy_driving_list.Count();
+            double intersection_related_percent = intersection_related_count / total_count;
+            double night_dark_condition_percent = night_dark_condition_count / total_count;
+            double roadway_departure_percent = roadway_departure_count / total_count;
+            double distracted_driving_percent = distracted_driving_count / total_count;
+            double wild_animal_percent = wild_animal_count / total_count;
+            double drowsy_driving_percent = drowsy_driving_count / total_count;
 
             ViewData["Total_Num_Records"] = crash_list.Count();
             ViewData["Salt_Lake_Percent"] = salt_lake_percent.ToString("P0", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
@@ -121,12 +139,16 @@ namespace Intex2.Controllers
             ViewBag.Min_Date_List_Percent = min_date_list_percent;
             ViewBag.Min_Date_List_Int = min_date_list_int;
             ViewBag.Min_Date_List = min_date_list;
-            
-
+            ViewData["Intersection_Related"] = intersection_related_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewData["Night_Dark_Condition"] = night_dark_condition_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewData["Road_Departure"] = roadway_departure_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewData["Distracted_Driving"] = distracted_driving_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewData["Wild_Animal"] = wild_animal_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewData["Drowsy_Driving"] = drowsy_driving_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
             return View();
         }
 
-        public IActionResult Output()
+        public IActionResult Output(Utah_Crash c)
         {
             return View();
         }

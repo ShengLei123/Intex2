@@ -75,7 +75,37 @@
             </div>
         </div>
     </div>
-    
+    <script>
+        document.getElementById('clear_tag_radio').onclick = function () {
+            var radio2 = document.querySelector('input[type=radio][name=WILD_ANIMAL_RELATED]');
+            var radio1 = document.querySelector('input[type=radio][name=DROWSY_DRIVING]');
+            var radio3 = document.querySelector('input[type=radio][name=DISTRACTED_DRIVING]');
+            var radio4 = document.querySelector('input[type=radio][name=ROADWAY_DEPARTURE]');
+            var radio5 = document.querySelector('input[type=radio][name=NIGHT_DARK_CONDITION]');
+            var radio6 = document.querySelector('input[type=radio][name=INTERSECTION_RELATED]');
+            if (radio2.checked == true)
+                radio2.checked = false
+            if (radio1.checked == true)
+                radio1.checked = false
+            if (radio3.checked == true)
+                radio3.checked = false
+            if (radio4.checked == true)
+                radio4.checked = false
+            if (radio5.checked == true)
+                radio5.checked = false
+            if (radio6.checked == true)
+                radio6.checked = false
+        };
+        document.getElementById('clear_year_radio').onclick = function () {
+            var radio = document.querySelector('input[type=radio][name=CRASH_DATETIME]:checked');
+                radio.checked = false;
+        };
+        document.getElementById('clear_severity_radio').onclick = function () {
+            var radio = document.querySelector('input[type=radio][name=CRASH_SEVERITY_ID]:checked');       
+                radio.checked = false;
+        };
+        
+    </script>
     <!-- Page Wrapper -->
     
 </body>
