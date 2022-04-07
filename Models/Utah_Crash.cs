@@ -21,25 +21,25 @@ namespace Intex2.Models
         public string? CITY { get; set; }
         public string? COUNTY_NAME { get; set; }
         public int? CRASH_SEVERITY_ID { get; set; }
-        public float? WORK_ZONE_RELATED { get; set; }
-        public float? PEDESTRIAN_INVOLVED { get; set; }
-        public float? BICYCLIST_INVOLVED { get; set; }
-        public float? MOTORCYCLE_INVOLVED { get; set; }
-        public float? IMPROPER_RESTRAINT { get; set; }
-        public float? UNRESTRAINED { get; set; }
-        public float? DUI { get; set; }
-        public float? INTERSECTION_RELATED { get; set; }
-        public float? WILD_ANIMAL_RELATED { get; set; }
-        public float? DOMESTIC_ANIMAL_RELATED { get; set; }
-        public float? OVERTURN_ROLLOVER { get; set; }
-        public float? COMMERCIAL_MOTOR_VEH_INVOLVED { get; set; }
-        public float? TEENAGE_DRIVER_INVOLVED { get; set; }
-        public float? OLDER_DRIVER_INVOLVED { get; set; }
-        public float? NIGHT_DARK_CONDITION { get; set; }
-        public float? SINGLE_VEHICLE { get; set; }
-        public float? DISTRACTED_DRIVING { get; set; }
-        public float? DROWSY_DRIVING { get; set; }
-        public float? ROADWAY_DEPARTURE { get; set; }
+        public double? WORK_ZONE_RELATED { get; set; }
+        public double? PEDESTRIAN_INVOLVED { get; set; }
+        public double? BICYCLIST_INVOLVED { get; set; }
+        public double? MOTORCYCLE_INVOLVED { get; set; }
+        public double? IMPROPER_RESTRAINT { get; set; }
+        public double? UNRESTRAINED { get; set; }
+        public double? DUI { get; set; }
+        public double? INTERSECTION_RELATED { get; set; }
+        public double? WILD_ANIMAL_RELATED { get; set; }
+        public double? DOMESTIC_ANIMAL_RELATED { get; set; }
+        public double? OVERTURN_ROLLOVER { get; set; }
+        public double? COMMERCIAL_MOTOR_VEH_INVOLVED { get; set; }
+        public double? TEENAGE_DRIVER_INVOLVED { get; set; }
+        public double? OLDER_DRIVER_INVOLVED { get; set; }
+        public double? NIGHT_DARK_CONDITION { get; set; }
+        public double? SINGLE_VEHICLE { get; set; }
+        public double? DISTRACTED_DRIVING { get; set; }
+        public double? DROWSY_DRIVING { get; set; }
+        public double? ROADWAY_DEPARTURE { get; set; }
 
         public Tensor<float?> AsTensor()
         {

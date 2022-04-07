@@ -112,17 +112,17 @@ namespace Intex2.Controllers
             double serverity_5_percent = serverity_5 / total_count;
 
             //Get Tags
-            var intersection_related_list = crash_list.FindAll(x => x.INTERSECTION_RELATED == true).ToList();
+            var intersection_related_list = crash_list.FindAll(x => x.INTERSECTION_RELATED == 1).ToList();
             double intersection_related_count = intersection_related_list.Count();
-            var night_dark_condition_list = crash_list.FindAll(x => x.NIGHT_DARK_CONDITION == true).ToList();
+            var night_dark_condition_list = crash_list.FindAll(x => x.NIGHT_DARK_CONDITION == 1).ToList();
             double night_dark_condition_count = night_dark_condition_list.Count();
-            var roadway_departure_list = crash_list.FindAll(x => x.ROADWAY_DEPARTURE == true).ToList();
+            var roadway_departure_list = crash_list.FindAll(x => x.ROADWAY_DEPARTURE == 1).ToList();
             double roadway_departure_count = roadway_departure_list.Count();
-            var distracted_driving_list = crash_list.FindAll(x => x.DISTRACTED_DRIVING == true).ToList();
+            var distracted_driving_list = crash_list.FindAll(x => x.DISTRACTED_DRIVING == 1).ToList();
             double distracted_driving_count = distracted_driving_list.Count();
-            var wild_animal_list = crash_list.FindAll(x => x.WILD_ANIMAL_RELATED == true).ToList();
+            var wild_animal_list = crash_list.FindAll(x => x.WILD_ANIMAL_RELATED == 1).ToList();
             double wild_animal_count = wild_animal_list.Count();
-            var drowsy_driving_list = crash_list.FindAll(x => x.DROWSY_DRIVING == true).ToList();
+            var drowsy_driving_list = crash_list.FindAll(x => x.DROWSY_DRIVING == 1).ToList();
             double drowsy_driving_count = drowsy_driving_list.Count();
             double intersection_related_percent = intersection_related_count / total_count;
             double night_dark_condition_percent = night_dark_condition_count / total_count;
