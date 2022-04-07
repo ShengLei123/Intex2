@@ -177,7 +177,7 @@ namespace Intex2.Controllers
         [Authorize]
         public IActionResult Accidents()
         {
-            var blah = _repo.Utah_Crash.Take(10).ToList();
+            var blah = _repo.Utah_Crash.OrderByDescending(x => x.CRASH_ID).Take(10).ToList();
             return View(blah);
         }
 
