@@ -243,7 +243,7 @@
             <div class="col-lg-6 mb-4">
 
                 <!-- Project Card Example -->
-                <div class="card shadow mb-4">
+                <div class="card shadow mb-4" style="height: 28rem;">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Crash Severity Distribution</h6>
                     </div>
@@ -318,7 +318,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-12">
                             <button type="button" class="btn btn-block btn-success" id="clear_severity_radio">Clear Selections</button>
                         </div>
                     </div>
@@ -327,7 +327,7 @@
 
                 <!-- Color System -->
                 
-                <div class="card shadow mb-4">
+                <div class="card shadow mb-4" style="height: 28rem;">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Frequent Car Carsh Tags</h6>
                     </div>
@@ -430,7 +430,7 @@
             <div class="col-lg-6 mb-4">
 
                 <!-- Illustrations -->
-                <div class="card shadow mb-4">
+                <div class="card shadow mb-4" style="height: 28rem;">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Crash Year Distribution</h6>
                     </div>
@@ -441,7 +441,7 @@
                                 <h4 class="small font-weight-bold">
                                     @ViewBag.Unique_Year[0]<span class="float-right">@ViewBag.Min_Date_List_Percent[0]</span>
                                 </h4>
-                                <div class="progress mb-4">
+                                <div class="progress mb-5">
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[0]"
                                          aria-valuenow="@ViewBag.Min_Date_List_Int[0]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -454,7 +454,7 @@
                                 <h4 class="small font-weight-bold">
                                     @ViewBag.Unique_Year[1]<span class="float-right">@ViewBag.Min_Date_List_Percent[1]</span>
                                 </h4>
-                                <div class="progress mb-4">
+                                <div class="progress mb-5">
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[1]"
                                          aria-valuenow="@ViewBag.Min_Date_List_Int[1]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -467,7 +467,7 @@
                                 <h4 class="small font-weight-bold">
                                     @ViewBag.Unique_Year[2]<span class="float-right">@ViewBag.Min_Date_List_Percent[2]</span>
                                 </h4>
-                                <div class="progress mb-4">
+                                <div class="progress mb-5">
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[2]"
                                          aria-valuenow="@ViewBag.Min_Date_List_Int[2]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -480,14 +480,14 @@
                                 <h4 class="small font-weight-bold">
                                     @ViewBag.Unique_Year[3]<span class="float-right">@ViewBag.Min_Date_List_Percent[3]</span>
                                 </h4>
-                                <div class="progress mb-4">
+                                <div class="progress mb-5">
                                     <div class="progress-bar bg-danger" role="progressbar" style="width: @ViewBag.Min_Date_List_Percent[3]"
                                          aria-valuenow="@ViewBag.Min_Date_List_Int[3]" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <br />
                         </div>
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-12">
                             <button type="button" class="btn btn-block btn-success" id="clear_year_radio">Clear Selections</button>
                         </div>
 
@@ -561,22 +561,26 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">County Distribution</h6>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body">  
                         <div class="row">
-                            <div class="col-12">
-                                <input class="btn-block form-control bg-light border-0 small" type="text" placeholder="Search County Name" id="county_name" onkeyup="filterFunction()" />
+                            <div class="col-lg-12 mt-4 navbar-nav-scroll">
+                                @for (int x = 0; x < 29; x++)
+                                {
+                                    <div class="row">
+                                        <input type="radio" class="col-lg-2 mt-3" value="@ViewBag.Raw_Unique_County[x]" asp-for="COUNTY_NAME">
+                                        <div class="col-lg-8 btn btn-primary btn-block text-white text-center mb-3">
+                                            @ViewBag.Unique_County[x] County
+                                            <div class="text-white-50 font-weight-bold small">@ViewBag.Unque_County_Percent[x] of total crashes</div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
-                            
-                            <div class="col-12 mt-4">
-                                <select class="btn-block form-control bg-light border-0 small" asp-for="COUNTY_NAME" multiple>
-                                    @foreach (string c in ViewBag.Unique_County) { 
-                                        <option class="font-weight-bold" value="1">@c</option>
-                                    }
-                                    
-                                </select>
-                            </div>
-                            
                         </div>
+                        
+                        <div class="col-lg-12 mt-4">
+                            <button type="button" class="btn btn-block btn-success" id="clear_county_radio">Clear Selections</button>
+                        </div>
+                        
                         @*<p>
                             SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
                             CSS bloat and poor page performance. Custom CSS classes are used to create

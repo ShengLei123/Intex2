@@ -104,7 +104,10 @@
             var radio = document.querySelector('input[type=radio][name=CRASH_SEVERITY_ID]:checked');       
                 radio.checked = false;
         };
-        
+        document.getElementById('clear_county_radio').onclick = function () {
+            var radio = document.querySelector('input[type=radio][name=COUNTY_NAME]:checked');
+            radio.checked = false;
+        };
     </script>
     <!-- Page Wrapper -->
     

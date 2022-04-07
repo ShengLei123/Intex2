@@ -51,13 +51,23 @@ namespace Intex2.Controllers
                 min_date_list_int.Add(Math.Round(temp_year_count_percent * 100, 0, MidpointRounding.AwayFromZero));
                 min_date_list.Add((DateTime)temp_min_year.Min());
             }
-            var year_view = unique_year.Zip(min_date_list, (n, w) => new { Number = n, Word = w }); 
-            
+            var year_view = unique_year.Zip(min_date_list, (n, w) => new { Number = n, Word = w });
+
             //Get County
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             var salt_lake_county = crash_list.FindAll(x => x.COUNTY_NAME == "SALT LAKE");
             double salt_lake_count = salt_lake_county.Count();
             double salt_lake_percent = salt_lake_count / total_count;
-            var unique_county = crash_list.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x).ToList();
+            var raw_unique_county = crash_list.Select(x => x.COUNTY_NAME).Distinct().OrderBy(x => x).ToList();
+            var unique_county = new List<string>();
+            var unique_county_percent = new List<string>();
+            foreach (string c in raw_unique_county)
+            {
+                unique_county.Add(textInfo.ToTitleCase(c.ToLower()));
+                double temp_city_count = crash_list.FindAll(x => x.COUNTY_NAME == c).Count();
+                double temp_city_percent = temp_city_count / total_count;
+                unique_county_percent.Add(temp_city_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty));
+            }
 
             // Get Severity
             var severity_list = _repo.Utah_Crash
@@ -146,7 +156,9 @@ namespace Intex2.Controllers
             ViewData["Distracted_Driving"] = distracted_driving_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
             ViewData["Wild_Animal"] = wild_animal_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
             ViewData["Drowsy_Driving"] = drowsy_driving_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+            ViewBag.Raw_Unique_County = raw_unique_county;
             ViewBag.Unique_County = unique_county;
+            ViewBag.Unque_County_Percent = unique_county_percent;
 
             return View();
         }
