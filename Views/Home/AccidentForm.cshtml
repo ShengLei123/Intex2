@@ -1,0 +1,170 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Utah_Crash
+
+    <body>
+        <div class="bg-dark text-white p-2">
+            <div>
+                <h3>Please Fill Out the Fields Below to Add an Accident</h3>
+            </div>
+            <div>
+                <form method="post" asp-controller="Home" asp-action="AddAccident" class="mb-5">
+                    <input asp-for="CRASH_ID" value="@Model.CRASH_ID" type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="CRASH_DATETIME">Date and Time: </label>
+                        <input asp-for="CRASH_DATETIME" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ROUTE">Route: </label>
+                        <input asp-for="ROUTE" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MILEPOINT"> MilePoint: </label>
+                        <input asp-for="MILEPOINT" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LAT_UTM_Y">Lattitude: </label>
+                        <input asp-for="LAT_UTM_Y" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LONG_UTM_X">Longitude: </label>
+                        <input asp-for="LONG_UTM_X" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MAIN_ROAD_NAME">Main Road Name: </label>
+                        <input asp-for="MAIN_ROAD_NAME" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CITY">City: </label>
+                        <input asp-for="CITY" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="COUNTY_NAME">County: </label>
+                        <input asp-for="COUNTY_NAME" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CRASH_SEVERITY_ID">Crash Severity (1-5): </label>
+                        <input asp-for="CRASH_SEVERITY_ID" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WORK_ZONE_RELATED">Work Zone Related: </label>
+                        <input asp-for="WORK_ZONE_RELATED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved: </label>
+                        <input asp-for="PEDESTRIAN_INVOLVED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BICYCLIST_INVOLVED">Bicylist Involved: </label>
+                        <input asp-for="BICYCLIST_INVOLVED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved: </label>
+                        <input asp-for="MOTORCYCLE_INVOLVED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IMPROPER_RESTRAINT">Improper Restraint: </label>
+                        <input asp-for="IMPROPER_RESTRAINT" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UNRESTRAINED">UnRestrained: </label>
+                        <input asp-for="UNRESTRAINED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DUI">DUI: </label>
+                        <input asp-for="DUI" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="INTERSECTION_RELATED">Intersection Related: </label>
+                        <input asp-for="INTERSECTION_RELATED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related: </label>
+                        <input asp-for="WILD_ANIMAL_RELATED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related: </label>
+                        <input asp-for="DOMESTIC_ANIMAL_RELATED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OVERTURN_ROLLOVER">Overturn Rollover: </label>
+                        <input asp-for="OVERTURN_ROLLOVER" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Vehicle Involved: </label>
+                        <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved: </label>
+                        <input asp-for="TEENAGE_DRIVER_INVOLVED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved: </label>
+                        <input asp-for="OLDER_DRIVER_INVOLVED" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NIGHT_DARK_CONDITION">Night_Dark_Condition: </label>
+                        <input asp-for="NIGHT_DARK_CONDITION" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SINGLE_VEHICLE">Single Vehicle: </label>
+                        <input asp-for="SINGLE_VEHICLE" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DISTRACTED_DRIVING">Distracted Driving: </label>
+                        <input asp-for="DISTRACTED_DRIVING" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DROWSY_DRIVING">Drowsy Driving: </label>
+                        <input asp-for="DROWSY_DRIVING" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ROADWAY_DEPARTURE">Roadway Departure: </label>
+                        <input asp-for="ROADWAY_DEPARTURE" class="form-group col-sm" />
+                        <br />
+                    </div>
+                    <button class="btn btn-primary col-sm">Submit</button>
+                </form>
+            </div>
+
+            @*<div class="form-group">
+                    <label asp-for="TeamID">Bowling Team: </label>
+                    <select asp-for="TeamID" class="form-group col-sm">
+                        @foreach (Team t in ViewBag.Teams)
+                        {
+                            <option value="@t.TeamID">@t.TeamName</option>
+                        }
+
+                    </select>
+                    <br />
+                </div>*@
+        </div>
+    </body>
