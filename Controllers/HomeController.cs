@@ -174,11 +174,35 @@ namespace Intex2.Controllers
             return View();
         }
 
+        //[Authorize]
+        //public IActionResult Accidents()
+        //{
+        //    var blah = _repo.Utah_Crash.OrderByDescending(x => x.CRASH_ID).Take(10).ToList();
+        //    return View(blah);
+        //}
+
         [Authorize]
-        public IActionResult Accidents()
+        public IActionResult Accidents(int pg = 1)
         {
-            var blah = _repo.Utah_Crash.OrderByDescending(x => x.CRASH_ID).Take(10).ToList();
-            return View(blah);
+            var blah = _repo.Utah_Crash.ToList();
+
+            const int pageSize = 5;
+            if (pg < 1)
+                pg = 1;
+
+            int recsCount = blah.Count();
+
+            var pager = new Pager(recsCount, pg, pageSize);
+
+            int recSkip = (pg - 1) * pageSize;
+
+            var data = blah.Skip(recSkip).Take(pager.PageSize).ToList();
+
+            this.ViewBag.Pager = pager;
+
+            //return View(blah);
+
+            return View(data);
         }
 
         [HttpGet]
