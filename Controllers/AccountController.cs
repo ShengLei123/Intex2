@@ -48,5 +48,12 @@ namespace Intex2.Controllers
             return View(loginModel);
 
         }
+
+        public async Task<RedirectResult> Logout (string returnUrl = "/")
+        {
+            await signInManager.SignOutAsync();
+
+            return Redirect(returnUrl);
+        }
     }
 }
