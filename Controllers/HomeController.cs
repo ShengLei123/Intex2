@@ -151,6 +151,7 @@ namespace Intex2.Controllers
             ViewBag.Min_Date_List_Percent = min_date_list_percent;
             ViewBag.Min_Date_List_Int = min_date_list_int;
             ViewBag.Min_Date_List = min_date_list;
+            ViewBag.Unique_Year_Num = unique_year.Count();
             ViewData["Intersection_Related"] = intersection_related_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
             ViewData["Night_Dark_Condition"] = night_dark_condition_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
             ViewData["Road_Departure"] = roadway_departure_percent.ToString("P1", CultureInfo.InvariantCulture).Replace(" ", string.Empty);
@@ -166,20 +167,135 @@ namespace Intex2.Controllers
 
         public IActionResult Output(Utah_Crash c)
         {
-            return View();
-        }
+            var crash_list = _repo.Utah_Crash.ToList();
 
+            if (c.CRASH_SEVERITY_ID != null)
+            {
+                crash_list = crash_list.Where(x => x.CRASH_SEVERITY_ID == c.CRASH_SEVERITY_ID).ToList();
+            }
+            if (c.CRASH_DATETIME != null)
+            {
+                DateTime last_day_the_year = new DateTime(c.CRASH_DATETIME.Value.Year + 1, 1, 1);
+                crash_list = crash_list.Where(x => x.CRASH_DATETIME > c.CRASH_DATETIME && x.CRASH_DATETIME < last_day_the_year).ToList();
+            }
+            if (c.COUNTY_NAME != null)
+            {
+                crash_list = crash_list.Where(x => x.COUNTY_NAME == c.COUNTY_NAME).ToList();
+            }
+            if (c.INTERSECTION_RELATED != null)
+            {
+                crash_list = crash_list.Where(x => x.INTERSECTION_RELATED == c.INTERSECTION_RELATED).ToList();
+            }
+            if (c.NIGHT_DARK_CONDITION != null)
+            {
+                crash_list = crash_list.Where(x => x.NIGHT_DARK_CONDITION == c.NIGHT_DARK_CONDITION).ToList();
+            }
+            if (c.ROADWAY_DEPARTURE != null)
+            {
+                crash_list = crash_list.Where(x => x.ROADWAY_DEPARTURE == c.ROADWAY_DEPARTURE).ToList();
+            }
+            if (c.DISTRACTED_DRIVING != null)
+            {
+                crash_list = crash_list.Where(x => x.DISTRACTED_DRIVING == c.DISTRACTED_DRIVING).ToList();
+            }
+            if (c.WILD_ANIMAL_RELATED != null)
+            {
+                crash_list = crash_list.Where(x => x.WILD_ANIMAL_RELATED == c.WILD_ANIMAL_RELATED).ToList();
+            }
+            if (c.DROWSY_DRIVING != null)
+            {
+                crash_list = crash_list.Where(x => x.DROWSY_DRIVING == c.DROWSY_DRIVING).ToList();
+            }
+
+            return View(crash_list);
+        }
+        public IActionResult SearchByID(Utah_Crash c)
+        {
+            var crash_list = _repo.Utah_Crash
+                .Where(x => x.CRASH_ID == c.CRASH_ID)
+                .ToList();
+
+            return View("Output", crash_list);
+        }
+        
         public IActionResult Privacy()
         {
             return View();
         }
 
+        //[Authorize]
+        //public IActionResult Accidents()
+        //{
+        //    var blah = _repo.Utah_Crash.OrderByDescending(x => x.CRASH_ID).Take(10).ToList();
+        //    return View(blah);
+        //}
+
         [Authorize]
-        public IActionResult Accidents()
+        public IActionResult Accidents(int pg = 1)
         {
-            var blah = _repo.Utah_Crash.OrderByDescending(x => x.CRASH_ID).Take(10).ToList();
-            return View(blah);
+            var blah = _repo.Utah_Crash.ToList();
+
+            const int pageSize = 4;
+            if (pg < 1)
+                pg = 1;
+
+            int recsCount = blah.Count();
+
+            var pager = new Pager(recsCount, pg, pageSize);
+
+            int recSkip = (pg - 1) * pageSize;
+
+            var data = blah.Skip(recSkip).Take(pager.PageSize).ToList();
+
+            this.ViewBag.Pager = pager;
+
+            //return View(blah);
+
+            return View(data);
         }
 
+        [HttpGet]
+        public IActionResult AddAccident()
+        {
+            var blah = _repo.Utah_Crash.Select(x => x.CRASH_ID);
+
+            var hah = new Utah_Crash
+            {
+                CRASH_ID = blah.Max() + 1
+            };
+
+            return View("AccidentForm", hah);
+        }
+
+        [HttpPost]
+        public IActionResult AddAccident(Utah_Crash c)
+        {
+            var blah = _repo.Utah_Crash.Select(x => x.CRASH_ID);
+
+            if (blah.Contains(c.CRASH_ID))
+            {
+                _repo.SaveAccident(c);
+            }
+            else
+            {
+                _repo.CreateAccident(c);
+            }
+
+            return RedirectToAction("Accidents");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var blah = _repo.Utah_Crash.Where(x => x.CRASH_ID == id).FirstOrDefault();
+            return View("AccidentForm", blah);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var blah = _repo.Utah_Crash.Where(x => x.CRASH_ID == id).FirstOrDefault();
+            _repo.DeleteAccident(blah);
+            return RedirectToAction("Accidents");
+        }
     }
 }
