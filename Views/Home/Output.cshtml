@@ -28,6 +28,134 @@
                 </div>
             </div>
         }
+        else if (Model.Count() < 4)
+        {
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <div class="col-lg-6 mt-4">
+                    <div class="card border-0">
+                        <div class="card-header bg-primary text-white font-weight-bold">
+                            Crash ID: @Model[i].CRASH_ID
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Crash Datetime:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].CRASH_DATETIME.ToString()
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Route:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].ROUTE
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Milepoint:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].MILEPOINT
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Latitude:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].LAT_UTM_Y
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Longtitude:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].LONG_UTM_X
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 font-weight-bold">
+                                    Main Road:
+                                </div>
+                                <div class="col-lg-9 text-right">
+                                    @Model[i].MAIN_ROAD_NAME
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    City:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].CITY
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    County Name:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].COUNTY_NAME
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Crash Severity:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @Model[i].CRASH_SEVERITY_ID
+                                </div>
+                            </div>
+                            <div class="row">
+                                @if (Model[i].WORK_ZONE_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Work Zone</div></div>}
+                                @if (Model[i].PEDESTRIAN_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Pedestrian Involved</div></div>}
+                                @if (Model[i].BICYCLIST_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Bicyclist Invovled</div></div>}
+                                @if (Model[i].MOTORCYCLE_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Motocycle Involved</div></div>}
+                                @if (Model[i].IMPROPER_RESTRAINT == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Improper Restraint</div></div>}
+                                @if (Model[i].UNRESTRAINED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Unrestrained</div></div>}
+                                @if (Model[i].DUI == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">DUI</div></div>}
+                                @if (Model[i].INTERSECTION_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Intersection Related</div></div>}
+                                @if (Model[i].WILD_ANIMAL_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Wild Animal</div></div>}
+                                @if (Model[i].DOMESTIC_ANIMAL_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Domestic Animal</div></div>}
+                                @if (Model[i].OVERTURN_ROLLOVER == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Overturn Rollover</div></div>}
+                                @if (Model[i].COMMERCIAL_MOTOR_VEH_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Commericial Motor</div></div>}
+                                @if (Model[i].TEENAGE_DRIVER_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Teenage Driver</div></div>}
+                                @if (Model[i].OLDER_DRIVER_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Older Driver</div></div>}
+                                @if (Model[i].NIGHT_DARK_CONDITION == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Dark Condition</div></div>}
+                                @if (Model[i].SINGLE_VEHICLE == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Single Vehicle</div></div>}
+                                @if (Model[i].DISTRACTED_DRIVING == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Distracted Driving</div></div>}
+                                @if (Model[i].DROWSY_DRIVING == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Drowst Driving</div></div>}
+                                @if (Model[i].ROADWAY_DEPARTURE == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Roadway Departure</div></div>}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
         else
         {
             @for (int i = 0; i < 4; i++)

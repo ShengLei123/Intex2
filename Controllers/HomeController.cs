@@ -238,10 +238,18 @@ namespace Intex2.Controllers
             var crash_list = _repo.Utah_Crash
                 .Where(x => x.CRASH_ID == c.CRASH_ID)
                 .ToList();
-
+            
             return View("Accidents", crash_list);
         }
-        
+        public IActionResult SearchByIDUser(Utah_Crash c)
+        {
+            var crash_list = _repo.Utah_Crash
+                .Where(x => x.CRASH_ID == c.CRASH_ID)
+                .ToList();
+            
+            return View("Output", crash_list);
+        }
+
         public IActionResult Privacy()
         {
             return View();
