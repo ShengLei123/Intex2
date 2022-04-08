@@ -46,16 +46,3 @@ namespace Intex2.Controllers
         }
     }
 }
-
-//var result = _session.Run(new List<NamedOnnxValue>
-//            {
-//                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
-//            });
-
-//Tensor<float> score = result.First().AsTensor<float>();
-
-//var prediction = new Prediction { PredictedValue = (float)Math.Round(score.First(), 0) };
-
-//result.Dispose();
-
-//return View("Prediction", prediction);
