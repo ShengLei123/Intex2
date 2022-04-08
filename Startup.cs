@@ -28,6 +28,17 @@ namespace Intex2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 1;
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential 
@@ -60,6 +71,7 @@ namespace Intex2
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -70,6 +82,24 @@ namespace Intex2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use(async (context, next) =>
+            {
+
+                context.Response.Headers.Add(
+                    "Content-Security-Policy",
+                    "default-src *; " +
+                    "script-src * 'unsafe-inline'; " +
+                    "style-src * 'unsafe-inline'; " +
+                    "img-src *" +
+                    "object-src *;" +
+                    "script-src *;" +
+                    "style-src *; +" +
+                    "upgrade-insecure-requests");
+
+                await next();
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -77,6 +107,19 @@ namespace Intex2
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+
+            //app.Use(async (ctx, next) =>
+            //{ ctx.Response.Headers.Add("Content-Security-Policy",
+            //    "default-src *")
+            //    ; await next(); });
+            //app.Use(async (ctx, next) =>
+            //{ ctx.Response.Headers.Add
+            //    ("Content-Security-Policy",
+            //    "default-src 'self'" +
+            //    "img-src *.history.com");
+
+            //await next(); });
 
             app.UseEndpoints(endpoints =>
             {
@@ -89,6 +132,9 @@ namespace Intex2
             });
 
             IdentitySeedData.EnsurePopulated(app);
+
+
+
         }
     }
 }
