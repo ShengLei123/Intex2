@@ -3,36 +3,37 @@
 }
 
 @model Intex2.Models.Prediction
+<div class="row pt-4">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Prediction Result</h6>
+            </div>
 
-<div class="col-xl-8 col-lg-7">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Prediction Result</h6>
-        </div>
+            <div class="text-center">
 
-        <div class="text-center">
+                <br />
 
-            <br />
+                <h1 class="text-danger">Severity Level: @Model.PredictedValue</h1>
 
-            <h1 class="text-danger">Severity Level: @Model.PredictedValue</h1>
+                <br />
 
-            <br />
-
-            <a class="btn btn-primary" asp-controller="Inference" asp-action="EnterData">Try Again</a>
+                <a class="btn btn-primary" asp-controller="Inference" asp-action="EnterData">Try Again</a>
             
-            <a class="btn btn-primary" asp-controller="Home" asp-action="Analytics">Checkout Our Analytics</a>
-        </div>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="Analytics">Checkout Our Analytics</a>
+            </div>
 
-        <div class="text-left">
-            <h3>Levels of Severity</h3>
-            <p>
-                1: No injury<br />
-                2: Possible injury<br />
-                3: Suspected minor injury<br />
-                4: Suspected serious injury<br />
-                5: Fatal<br />
-            </p>     
+            <div class="text-center mt-5">
+                <h5>Levels of Severity</h5>
+                <p>
+                    1: No injury<br />
+                    2: Possible injury<br />
+                    3: Suspected minor injury<br />
+                    4: Suspected serious injury<br />
+                    5: Fatal<br />
+                </p>     
+            </div>
+            <br />
         </div>
-        <br />
     </div>
-</div>

@@ -239,7 +239,7 @@ namespace Intex2.Controllers
                 .Where(x => x.CRASH_ID == c.CRASH_ID)
                 .ToList();
 
-            return View("Output", crash_list);
+            return View("Accidents", crash_list);
         }
         
         public IActionResult Privacy()

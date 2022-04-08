@@ -3,129 +3,130 @@
 }
 
 @model Feature 
+<div class="row pt-4">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 col-sm-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Run Your Prediction</h6>
+            </div>
 
-<div class="col-xl-8 col-lg-7">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Run Your Prediction</h6>
+            <div class="card-body">
+                <form method="post" asp-controller="Inference" asp-action="Prediction">
+
+                    <div>
+                        <label>Milepoint:</label>
+                        <input asp-for="MILEPOINT"/>
+                        <span asp-validation-for="MILEPOINT" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Latitude:</label>
+                        <input asp-for="LAT_UTM_Y"/>
+                        <span asp-validation-for="LAT_UTM_Y" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Longitude:</label>
+                        <input asp-for="LONG_UTM_X"/>
+                        <span asp-validation-for="LONG_UTM_X" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Work Zone Realated:</label>
+                        <input type="radio" asp-for="WORK_ZONE_RELATED" value="1"/> True
+                        <input type="radio" asp-for="WORK_ZONE_RELATED" value="0"checked/> False
+                        <span asp-validation-for="WORK_ZONE_RELATED" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Unrestrained:</label>
+                        <input type="radio" asp-for="UNRESTRAINED" value="1" /> True
+                        <input type="radio" asp-for="UNRESTRAINED" value="0" checked/> False
+                        <span asp-validation-for="UNRESTRAINED" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Driving Under the Influence:</label>
+                        <input type="radio" asp-for="DUI" value="1" /> True
+                        <input type="radio" asp-for="DUI" value="0" checked/> False
+                        <span asp-validation-for="DUI" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Intersection Related:</label>
+                        <input type="radio" asp-for="INTERSECTION_RELATED" value="1" /> True
+                        <input type="radio" asp-for="INTERSECTION_RELATED" value="0" checked/> False
+                        <span asp-validation-for="INTERSECTION_RELATED" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Wild Animal related:</label>
+                        <input type="radio" asp-for="WILD_ANIMAL_RELATED" value="1" /> True
+                        <input type="radio" asp-for="WILD_ANIMAL_RELATED" value="0" checked/> False
+                        <span asp-validation-for="WILD_ANIMAL_RELATED" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Overturn Rollover:</label>
+                        <input type="radio" asp-for="OVERTURN_ROLLOVER" value="1" /> True
+                        <input type="radio" asp-for="OVERTURN_ROLLOVER" value="0" checked/> False
+                        <span asp-validation-for="OVERTURN_ROLLOVER" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Commercial Motor Vehicle Involved:</label>
+                        <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="1" /> True
+                        <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="0" checked/> False
+                        <span asp-validation-for="COMMERCIAL_MOTOR_VEH_INVOLVED" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Teenage Driver Involved:</label>
+                        <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="1" /> True
+                        <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="0" checked/> False
+                        <span asp-validation-for="TEENAGE_DRIVER_INVOLVED" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Older Driver Involved:</label>
+                        <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="1" /> True
+                        <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="0" checked/> False
+                        <span asp-validation-for="OLDER_DRIVER_INVOLVED" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Night Dark Condition:</label>
+                        <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="1" /> True
+                        <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="0" checked/> False
+                        <span asp-validation-for="NIGHT_DARK_CONDITION" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Single Vehicle:</label>
+                        <input type="radio" asp-for="SINGLE_VEHICLE" value="1" /> True
+                        <input type="radio" asp-for="SINGLE_VEHICLE" value="0" checked/> False
+                        <span asp-validation-for="SINGLE_VEHICLE" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Distracted Driving:</label>
+                        <input type="radio" asp-for="DISTRACTED_DRIVING" value="1" /> True
+                        <input type="radio" asp-for="DISTRACTED_DRIVING" value="0" checked/> False
+                        <span asp-validation-for="DISTRACTED_DRIVING" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label>Roadway Departure:</label>
+                        <input type="radio" asp-for="ROADWAY_DEPARTURE" value="1" /> True
+                        <input type="radio" asp-for="ROADWAY_DEPARTURE" value="0" checked/> False
+                        <span asp-validation-for="ROADWAY_DEPARTURE" class="text-danger"></span>
+                    </div>
+
+                    <br />
+                    <button type="submit" class="btn btn-block btn-primary">Calculate</button>
+                </form>
+            </div>
+
         </div>
-
-        <div class="card-body">
-            <form method="post" asp-controller="Inference" asp-action="Prediction">
-
-                <div>
-                    <label>Milepoint:</label>
-                    <input asp-for="MILEPOINT"/>
-                    <span asp-validation-for="MILEPOINT" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Latitude:</label>
-                    <input asp-for="LAT_UTM_Y"/>
-                    <span asp-validation-for="LAT_UTM_Y" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Longitude:</label>
-                    <input asp-for="LONG_UTM_X"/>
-                    <span asp-validation-for="LONG_UTM_X" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Work Zone Realated:</label>
-                    <input type="radio" asp-for="WORK_ZONE_RELATED" value="1"/> True
-                    <input type="radio" asp-for="WORK_ZONE_RELATED" value="0"/> False
-                    <span asp-validation-for="WORK_ZONE_RELATED" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Unrestrained:</label>
-                    <input type="radio" asp-for="UNRESTRAINED" value="1" /> True
-                    <input type="radio" asp-for="UNRESTRAINED" value="0" /> False
-                    <span asp-validation-for="UNRESTRAINED" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Driving Under the Influence:</label>
-                    <input type="radio" asp-for="DUI" value="1" /> True
-                    <input type="radio" asp-for="DUI" value="0" /> False
-                    <span asp-validation-for="DUI" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Intersection Related:</label>
-                    <input type="radio" asp-for="INTERSECTION_RELATED" value="1" /> True
-                    <input type="radio" asp-for="INTERSECTION_RELATED" value="0" /> False
-                    <span asp-validation-for="INTERSECTION_RELATED" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Wild Animal related:</label>
-                    <input type="radio" asp-for="WILD_ANIMAL_RELATED" value="1" /> True
-                    <input type="radio" asp-for="WILD_ANIMAL_RELATED" value="0" /> False
-                    <span asp-validation-for="WILD_ANIMAL_RELATED" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Overturn Rollover:</label>
-                    <input type="radio" asp-for="OVERTURN_ROLLOVER" value="1" /> True
-                    <input type="radio" asp-for="OVERTURN_ROLLOVER" value="0" /> False
-                    <span asp-validation-for="OVERTURN_ROLLOVER" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Commercial Motor Vehicle Involved:</label>
-                    <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="1" /> True
-                    <input type="radio" asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" value="0" /> False
-                    <span asp-validation-for="COMMERCIAL_MOTOR_VEH_INVOLVED" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Teenage Driver Involved:</label>
-                    <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="1" /> True
-                    <input type="radio" asp-for="TEENAGE_DRIVER_INVOLVED" value="0" /> False
-                    <span asp-validation-for="TEENAGE_DRIVER_INVOLVED" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Older Driver Involved:</label>
-                    <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="1" /> True
-                    <input type="radio" asp-for="OLDER_DRIVER_INVOLVED" value="0" /> False
-                    <span asp-validation-for="OLDER_DRIVER_INVOLVED" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Night Dark Condition:</label>
-                    <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="1" /> True
-                    <input type="radio" asp-for="NIGHT_DARK_CONDITION" value="0" /> False
-                    <span asp-validation-for="NIGHT_DARK_CONDITION" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Single Vehicle:</label>
-                    <input type="radio" asp-for="SINGLE_VEHICLE" value="1" /> True
-                    <input type="radio" asp-for="SINGLE_VEHICLE" value="0" /> False
-                    <span asp-validation-for="SINGLE_VEHICLE" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Distracted Driving:</label>
-                    <input type="radio" asp-for="DISTRACTED_DRIVING" value="1" /> True
-                    <input type="radio" asp-for="DISTRACTED_DRIVING" value="0" /> False
-                    <span asp-validation-for="DISTRACTED_DRIVING" class="text-danger"></span>
-                </div>
-
-                <div>
-                    <label>Roadway Departure:</label>
-                    <input type="radio" asp-for="ROADWAY_DEPARTURE" value="1" /> True
-                    <input type="radio" asp-for="ROADWAY_DEPARTURE" value="0" /> False
-                    <span asp-validation-for="ROADWAY_DEPARTURE" class="text-danger"></span>
-                </div>
-
-                <br />
-                <button type="submit">Calculate</button>
-            </form>
-        </div>
-
     </div>
-</div>
