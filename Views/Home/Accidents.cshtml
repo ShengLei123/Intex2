@@ -84,7 +84,17 @@
                 <div class="col-lg-6 mt-4">
                     <div class="card border-0">
                         <div class="card-header bg-primary text-white font-weight-bold">
-                            Crash ID: @c.CRASH_ID
+                            <div class="row">
+                                <div class="col-lg-8 mt-2">
+                                    Crash ID: @c.CRASH_ID
+                                </div>
+                                <div class="col-1g-4 ml-2"> 
+                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@c.CRASH_ID" class="btn btn-warning">Edit</a>
+                                    <a asp-controller="Home" asp-action="Delete" asp-route-id="@c.CRASH_ID" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                            
+                            
                         </div>
                         <div class="card-body">
                             <div class="row">

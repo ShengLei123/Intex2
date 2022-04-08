@@ -3,168 +3,281 @@
 *@
 @model Utah_Crash
 
-    <body>
-        <div class="bg-dark text-white p-2">
-            <div>
-                <h3>Please Fill Out the Fields Below to Add an Accident</h3>
+    
+<div class="text-white p-2 row">
+    <div class="col-lg-12 col-sm-12 text-center mb-5 pt-5">
+        <h3>Please Fill Out the Fields Below to Add an Accident</h3>
+    </div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <form method="post" asp-controller="Home" asp-action="AddAccident" class="mb-5">
+            <input asp-for="CRASH_ID" value="@Model.CRASH_ID" type="hidden" />
+            <div class="form-group">
+                <label asp-for="CRASH_DATETIME">Date and Time: </label>
+                <input asp-for="CRASH_DATETIME" class="form-control" />
+                <br />
             </div>
-            <div>
-                <form method="post" asp-controller="Home" asp-action="AddAccident" class="mb-5">
-                    <input asp-for="CRASH_ID" value="@Model.CRASH_ID" type="hidden" />
-                    <div class="form-group">
-                        <label asp-for="CRASH_DATETIME">Date and Time: </label>
-                        <input asp-for="CRASH_DATETIME" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ROUTE">Route: </label>
-                        <input asp-for="ROUTE" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="MILEPOINT"> MilePoint: </label>
-                        <input asp-for="MILEPOINT" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="LAT_UTM_Y">Lattitude: </label>
-                        <input asp-for="LAT_UTM_Y" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="LONG_UTM_X">Longitude: </label>
-                        <input asp-for="LONG_UTM_X" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="MAIN_ROAD_NAME">Main Road Name: </label>
-                        <input asp-for="MAIN_ROAD_NAME" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="CITY">City: </label>
-                        <input asp-for="CITY" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="COUNTY_NAME">County: </label>
-                        <input asp-for="COUNTY_NAME" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="CRASH_SEVERITY_ID">Crash Severity (1-5): </label>
-                        <input asp-for="CRASH_SEVERITY_ID" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="WORK_ZONE_RELATED">Work Zone Related: </label>
-                        <input asp-for="WORK_ZONE_RELATED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved: </label>
-                        <input asp-for="PEDESTRIAN_INVOLVED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="BICYCLIST_INVOLVED">Bicylist Involved: </label>
-                        <input asp-for="BICYCLIST_INVOLVED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved: </label>
-                        <input asp-for="MOTORCYCLE_INVOLVED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="IMPROPER_RESTRAINT">Improper Restraint: </label>
-                        <input asp-for="IMPROPER_RESTRAINT" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="UNRESTRAINED">UnRestrained: </label>
-                        <input asp-for="UNRESTRAINED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DUI">DUI: </label>
-                        <input asp-for="DUI" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="INTERSECTION_RELATED">Intersection Related: </label>
-                        <input asp-for="INTERSECTION_RELATED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related: </label>
-                        <input asp-for="WILD_ANIMAL_RELATED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related: </label>
-                        <input asp-for="DOMESTIC_ANIMAL_RELATED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="OVERTURN_ROLLOVER">Overturn Rollover: </label>
-                        <input asp-for="OVERTURN_ROLLOVER" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Vehicle Involved: </label>
-                        <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved: </label>
-                        <input asp-for="TEENAGE_DRIVER_INVOLVED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved: </label>
-                        <input asp-for="OLDER_DRIVER_INVOLVED" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="NIGHT_DARK_CONDITION">Night_Dark_Condition: </label>
-                        <input asp-for="NIGHT_DARK_CONDITION" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="SINGLE_VEHICLE">Single Vehicle: </label>
-                        <input asp-for="SINGLE_VEHICLE" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DISTRACTED_DRIVING">Distracted Driving: </label>
-                        <input asp-for="DISTRACTED_DRIVING" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DROWSY_DRIVING">Drowsy Driving: </label>
-                        <input asp-for="DROWSY_DRIVING" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ROADWAY_DEPARTURE">Roadway Departure: </label>
-                        <input asp-for="ROADWAY_DEPARTURE" class="form-group col-sm" />
-                        <br />
-                    </div>
-                    <button class="btn btn-primary col-sm">Submit</button>
-                </form>
+            <div class="form-group">
+                <label asp-for="ROUTE">Route: </label>
+                <input asp-for="ROUTE" class="form-control" />
+                <br />
             </div>
+            <div class="form-group">
+                <label asp-for="MILEPOINT"> Milepoint: </label>
+                <input asp-for="MILEPOINT" class="form-control" />
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="LAT_UTM_Y">Lattitude: </label>
+                <input asp-for="LAT_UTM_Y" class="form-control" />
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="LONG_UTM_X">Longitude: </label>
+                <input asp-for="LONG_UTM_X" class="form-control" />
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="MAIN_ROAD_NAME">Main Road Name: </label>
+                <input asp-for="MAIN_ROAD_NAME" class="form-control" />
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="CITY">City: </label>
+                <input asp-for="CITY" class="form-control" />
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="COUNTY_NAME">County: </label>
+                <input asp-for="COUNTY_NAME" class="form-control" />
+                <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="CRASH_SEVERITY_ID">Crash Severity (1-5): </label>
+                <select asp-for="CRASH_SEVERITY_ID" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="WORK_ZONE_RELATED">Work Zone Related: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="WORK_ZONE_RELATED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="WORK_ZONE_RELATED" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="PEDESTRIAN_INVOLVED">Pedestrian Involved: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="PEDESTRIAN_INVOLVED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="PEDESTRIAN_INVOLVED" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="BICYCLIST_INVOLVED">Bicylist Involved: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="BICYCLIST_INVOLVED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="BICYCLIST_INVOLVED" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="MOTORCYCLE_INVOLVED">Motorcycle Involved: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="MOTORCYCLE_INVOLVED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="MOTORCYCLE_INVOLVED" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="IMPROPER_RESTRAINT">Improper Restraint: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="IMPROPER_RESTRAINT" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="IMPROPER_RESTRAINT" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="UNRESTRAINED">UnRestrained: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="UNRESTRAINED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="UNRESTRAINED" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="DUI">DUI: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="DUI" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="DUI" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="INTERSECTION_RELATED">Intersection Related: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="INTERSECTION_RELATED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="INTERSECTION_RELATED" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="WILD_ANIMAL_RELATED">Wild Animal Related: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="WILD_ANIMAL_RELATED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="WILD_ANIMAL_RELATED" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="DOMESTIC_ANIMAL_RELATED">Domestic Animal Related: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="OVERTURN_ROLLOVER">Overturn Rollover: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="OVERTURN_ROLLOVER" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="OVERTURN_ROLLOVER" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED">Commercial Vehicle Involved: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="TEENAGE_DRIVER_INVOLVED">Teenage Driver Involved: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="OLDER_DRIVER_INVOLVED">Older Driver Involved: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="NIGHT_DARK_CONDITION">Night_Dark_Condition: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="NIGHT_DARK_CONDITION" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="NIGHT_DARK_CONDITION" type="radio" value="0" class="ml-5" />False
+                </div>
+                
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="SINGLE_VEHICLE">Single Vehicle: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="SINGLE_VEHICLE" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="SINGLE_VEHICLE" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="DISTRACTED_DRIVING">Distracted Driving: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="DISTRACTED_DRIVING" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="DISTRACTED_DRIVING" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="DROWSY_DRIVING">Drowsy Driving: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="DROWSY_DRIVING" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="DROWSY_DRIVING" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="ROADWAY_DEPARTURE">Roadway Departure: </label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="ROADWAY_DEPARTURE" type="radio" value="1" class="ml-5" />True
+                    <input asp-for="ROADWAY_DEPARTURE" type="radio" value="0" class="ml-5" />False
+                </div>
+                <br />
+            </div>
+            <button class="btn btn-primary col-sm">Submit</button>
+        </form>
+    </div>
 
-            @*<div class="form-group">
-                    <label asp-for="TeamID">Bowling Team: </label>
-                    <select asp-for="TeamID" class="form-group col-sm">
-                        @foreach (Team t in ViewBag.Teams)
-                        {
-                            <option value="@t.TeamID">@t.TeamName</option>
-                        }
+    @*<div class="form-group">
+            <label asp-for="TeamID">Bowling Team: </label>
+            <select asp-for="TeamID" class="form-group col-sm">
+                @foreach (Team t in ViewBag.Teams)
+                {
+                    <option value="@t.TeamID">@t.TeamName</option>
+                }
 
-                    </select>
-                    <br />
-                </div>*@
-        </div>
-    </body>
+            </select>
+            <br />
+        </div>*@
+</div>
+  
