@@ -209,6 +209,7 @@ namespace Intex2.Controllers
 
             return View(crash_list);
         }
+
         public IActionResult SearchByID(Utah_Crash c)
         {
             var crash_list = _repo.Utah_Crash
@@ -230,7 +231,6 @@ namespace Intex2.Controllers
         //    return View(blah);
         //}
 
-        [Authorize]
         public IActionResult Accidents(int pg = 1)
         {
             var blah = _repo.Utah_Crash.ToList();
@@ -296,6 +296,19 @@ namespace Intex2.Controllers
             var blah = _repo.Utah_Crash.Where(x => x.CRASH_ID == id).FirstOrDefault();
             _repo.DeleteAccident(blah);
             return RedirectToAction("Accidents");
+        }
+
+        //[HttpGet]
+        //public IActionResult Search(int id)
+        //{
+        //    var blah = _repo.Utah_Crash.Where(x => x.CRASH_ID == id).ToList();
+        //    return View("Output", blah);
+        //}
+
+        [Authorize]
+        public IActionResult SearchForm()
+        {
+            return View("SearchForm");
         }
     }
 }

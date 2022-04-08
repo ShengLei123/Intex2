@@ -9,6 +9,7 @@
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Inference\" />
+    <Folder Include="wwwroot\lib\qrcode\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,5 +45,8 @@
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Microsoft.AspNetCore.Identity.UI" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\lib\qrcode\" />
   </ItemGroup>
 </Project>

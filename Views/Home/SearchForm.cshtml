@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Admin Search";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Utah_Crash
+
+<div class="row text-white pt-5">
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Search</h6>
+            </div>
+
+            <div class="card-body">
+                <form method="post" asp-controller="Home" asp-action="SearchByID">
+
+                    <div>
+                        <label>ID:</label>
+                        <input asp-for="CRASH_ID" />
+                    </div>
+
+                    @*<div>
+                            <label>City:</label>
+                            <input asp-for="CITY" />
+                        </div>
+
+                        <div>
+                            <label>Severity:</label>
+                            <input asp-for="CRASH_SEVERITY_ID" />
+                        </div>*@
+
+                    <br />
+                    <button type="submit">Search</button>
+                </form>
+                <br />
+                <a asp-controller="Home" asp-action="Accidents" class="btn btn-primary text-white">View all Data</a>
+            </div>
+
+        </div>
+    </div>
+</div>
