@@ -54,7 +54,7 @@ namespace Intex2
             services.AddScoped<ICrashRepository, EFCrashRepository>();
 
             services.AddSingleton<InferenceSession>(
-                new InferenceSession("utahcrash.onnx"));
+                new InferenceSession("UtahCrash_HG_Boost_prediction.onnx"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

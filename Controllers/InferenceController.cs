@@ -24,21 +24,38 @@ namespace Intex2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crash(Utah_Crash data)
+        public IActionResult Prediction(Feature data)
         {
-            var result = _session.Run(new List<NamedOnnxValue>
+            if (ModelState.IsValid)
             {
-                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
-            });
+                var result = _session.Run(new List<NamedOnnxValue>
+                    {
+                        NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+                    });
 
-            Tensor<float> score = result.First().AsTensor<float>();
+                Tensor<float> score = result.First().AsTensor<float>();
 
-            var prediction = new Prediction { PredictedValue = score.First() };
+                var prediction = new Prediction { PredictedValue = (float)Math.Round(score.First(), 0) };
 
-            result.Dispose();
+                result.Dispose();
 
-            return View("Prediction", prediction);
+                return View("Prediction", prediction); 
+            }
 
+            return View("EnterData");
         }
     }
 }
+
+//var result = _session.Run(new List<NamedOnnxValue>
+//            {
+//                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+//            });
+
+//Tensor<float> score = result.First().AsTensor<float>();
+
+//var prediction = new Prediction { PredictedValue = (float)Math.Round(score.First(), 0) };
+
+//result.Dispose();
+
+//return View("Prediction", prediction);

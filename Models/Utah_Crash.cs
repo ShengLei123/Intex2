@@ -41,16 +41,6 @@ namespace Intex2.Models
         public double? DROWSY_DRIVING { get; set; }
         public double? ROADWAY_DEPARTURE { get; set; }
 
-        public Tensor<float?> AsTensor()
-        {
-            float?[] data = new float?[]
-            {
-                MILEPOINT, LAT_UTM_Y, LONG_UTM_X
-            };
-            int[] dimensions = new int[] { 1, 3 };
-
-            return new DenseTensor<float?>(data, dimensions);
-        }
 
     }
 }
