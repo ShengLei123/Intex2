@@ -1,5 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Output Page";
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
 }
 @model List<Utah_Crash>
 
@@ -8,7 +17,9 @@
         <div class="col-12">
             <a class="btn btn-primary" asp-controller="Home" asp-action="Analytics">Back To Analytics</a>
         </div>
-        
+        <div class="col-12 mt-3 text-white font-weight-bold">
+            Total Number of record: @ViewBag.Output_Num
+        </div>
         @if (Model.Count() == 0)
         {
             <div class="col-12 mt-3">
@@ -19,12 +30,12 @@
         }
         else
         {
-            @foreach (Utah_Crash c in Model)
+            @for (int i = 0; i < 4; i++)
             {
                 <div class="col-lg-6 mt-4">
                     <div class="card border-0">
                         <div class="card-header bg-primary text-white font-weight-bold">
-                            Crash ID: @c.CRASH_ID
+                            Crash ID: @Model[i].CRASH_ID
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -32,7 +43,7 @@
                                     Crash Datetime:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.CRASH_DATETIME.ToString()
+                                    @Model[i].CRASH_DATETIME.ToString()
                                 </div>
                             </div>
                             <div class="row">
@@ -40,7 +51,7 @@
                                     Route:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.ROUTE
+                                    @Model[i].ROUTE
                                 </div>
                             </div>
                             <div class="row">
@@ -48,7 +59,7 @@
                                     Milepoint:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.MILEPOINT
+                                    @Model[i].MILEPOINT
                                 </div>
                             </div>
                             <div class="row">
@@ -56,7 +67,7 @@
                                     Latitude:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.LAT_UTM_Y
+                                    @Model[i].LAT_UTM_Y
                                 </div>
                             </div>
                             <div class="row">
@@ -64,7 +75,7 @@
                                     Longtitude:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.LONG_UTM_X
+                                    @Model[i].LONG_UTM_X
                                 </div>
                             </div>
                             <div class="row">
@@ -72,7 +83,7 @@
                                     Main Road:
                                 </div>
                                 <div class="col-lg-9 text-right">
-                                    @c.MAIN_ROAD_NAME
+                                    @Model[i].MAIN_ROAD_NAME
                                 </div>
                             </div>
                             <div class="row">
@@ -80,7 +91,7 @@
                                     City:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.CITY
+                                    @Model[i].CITY
                                 </div>
                             </div>
                             <div class="row">
@@ -88,7 +99,7 @@
                                     County Name:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.COUNTY_NAME
+                                    @Model[i].COUNTY_NAME
                                 </div>
                             </div>
                             <div class="row">
@@ -96,47 +107,47 @@
                                     Crash Severity:
                                 </div>
                                 <div class="col-lg-6 text-right">
-                                    @c.CRASH_SEVERITY_ID
+                                    @Model[i].CRASH_SEVERITY_ID
                                 </div>
                             </div>
                             <div class="row">
-                                @if (c.WORK_ZONE_RELATED == 1)
+                                @if (Model[i].WORK_ZONE_RELATED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Work Zone</div></div>}
-                                @if (c.PEDESTRIAN_INVOLVED == 1)
+                                @if (Model[i].PEDESTRIAN_INVOLVED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Pedestrian Involved</div></div>}
-                                @if (c.BICYCLIST_INVOLVED == 1)
+                                @if (Model[i].BICYCLIST_INVOLVED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Bicyclist Invovled</div></div>}
-                                @if (c.MOTORCYCLE_INVOLVED == 1)
+                                @if (Model[i].MOTORCYCLE_INVOLVED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Motocycle Involved</div></div>}
-                                @if (c.IMPROPER_RESTRAINT == 1)
+                                @if (Model[i].IMPROPER_RESTRAINT == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Improper Restraint</div></div>}
-                                @if (c.UNRESTRAINED == 1)
+                                @if (Model[i].UNRESTRAINED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Unrestrained</div></div>}
-                                @if (c.DUI == 1)
+                                @if (Model[i].DUI == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">DUI</div></div>}
-                                @if (c.INTERSECTION_RELATED == 1)
+                                @if (Model[i].INTERSECTION_RELATED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Intersection Related</div></div>}
-                                @if (c.WILD_ANIMAL_RELATED == 1)
+                                @if (Model[i].WILD_ANIMAL_RELATED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Wild Animal</div></div>}
-                                @if (c.DOMESTIC_ANIMAL_RELATED == 1)
+                                @if (Model[i].DOMESTIC_ANIMAL_RELATED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Domestic Animal</div></div>}
-                                @if (c.OVERTURN_ROLLOVER == 1)
+                                @if (Model[i].OVERTURN_ROLLOVER == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Overturn Rollover</div></div>}
-                                @if (c.COMMERCIAL_MOTOR_VEH_INVOLVED == 1)
+                                @if (Model[i].COMMERCIAL_MOTOR_VEH_INVOLVED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Commericial Motor</div></div>}
-                                @if (c.TEENAGE_DRIVER_INVOLVED == 1)
+                                @if (Model[i].TEENAGE_DRIVER_INVOLVED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Teenage Driver</div></div>}
-                                @if (c.OLDER_DRIVER_INVOLVED == 1)
+                                @if (Model[i].OLDER_DRIVER_INVOLVED == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Older Driver</div></div>}
-                                @if (c.NIGHT_DARK_CONDITION == 1)
+                                @if (Model[i].NIGHT_DARK_CONDITION == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Dark Condition</div></div>}
-                                @if (c.SINGLE_VEHICLE == 1)
+                                @if (Model[i].SINGLE_VEHICLE == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Single Vehicle</div></div>}
-                                @if (c.DISTRACTED_DRIVING == 1)
+                                @if (Model[i].DISTRACTED_DRIVING == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Distracted Driving</div></div>}
-                                @if (c.DROWSY_DRIVING == 1)
+                                @if (Model[i].DROWSY_DRIVING == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Drowst Driving</div></div>}
-                                @if (c.ROADWAY_DEPARTURE == 1)
+                                @if (Model[i].ROADWAY_DEPARTURE == 1)
                                 {<div class="mr-1"><div class="badge badge-warning">Roadway Departure</div></div>}
                             </div>
 
@@ -146,7 +157,99 @@
             }
         }
 
+    </div>
+</div>
 
+<div class="container">
+    <div class="row mt-4 pb-4">
+        <div class="col-lg-12 col-sm-12 justify-content-center">
+            @if (pager.TotalPages > 1)
+            {
+                <ul class="pagination justify-content-center">
+
+                    @if (pager.CurrentPage > 1)
+                    {
+                        <form asp-controller="Home" asp-action="Output" asp-route-pg="1">
+                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@Model[Model.Count() - 1].CRASH_SEVERITY_ID" />
+                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@Model[Model.Count() - 1].CRASH_DATETIME" />
+                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@Model[Model.Count() - 1].COUNTY_NAME" />
+                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@Model[Model.Count() - 1].INTERSECTION_RELATED" />
+                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@Model[Model.Count() - 1].NIGHT_DARK_CONDITION" />
+                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@Model[Model.Count() - 1].ROADWAY_DEPARTURE" />
+                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@Model[Model.Count() - 1].DISTRACTED_DRIVING" />
+                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@Model[Model.Count() - 1].WILD_ANIMAL_RELATED" />
+                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@Model[Model.Count() - 1].DROWSY_DRIVING" />
+                            <li class="page-item">
+                                <button class="border-0 bg-transparent"><a class="page-link">First</a></button> 
+                            </li>
+                        </form>
+
+                    }
+
+
+                    @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+                    {
+                        <form asp-controller="Home" asp-action="Output" asp-route-pg="@pge">
+                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@Model[Model.Count() - 1].CRASH_SEVERITY_ID" />
+                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@Model[Model.Count() - 1].CRASH_DATETIME" />
+                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@Model[Model.Count() - 1].COUNTY_NAME" />
+                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@Model[Model.Count() - 1].INTERSECTION_RELATED" />
+                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@Model[Model.Count() - 1].NIGHT_DARK_CONDITION" />
+                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@Model[Model.Count() - 1].ROADWAY_DEPARTURE" />
+                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@Model[Model.Count() - 1].DISTRACTED_DRIVING" />
+                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@Model[Model.Count() - 1].WILD_ANIMAL_RELATED" />
+                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@Model[Model.Count() - 1].DROWSY_DRIVING" />
+                            <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                                <button class="border-0 bg-transparent"><a class="page-link">@pge</a></button> 
+                            </li>
+                        </form>
+
+                    }
+
+                    @if (pager.CurrentPage < pager.TotalPages)
+                    {
+                        @*<form asp-controller="Home" asp-action="Output" asp-route-pg="@(pager.CurrentPage  + 1)">
+                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@Model[Model.Count() - 1].CRASH_SEVERITY_ID" />
+                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@Model[Model.Count() - 1].CRASH_DATETIME" />
+                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@Model[Model.Count() - 1].COUNTY_NAME" />
+                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@Model[Model.Count() - 1].INTERSECTION_RELATED" />
+                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@Model[Model.Count() - 1].NIGHT_DARK_CONDITION" />
+                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@Model[Model.Count() - 1].ROADWAY_DEPARTURE" />
+                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@Model[Model.Count() - 1].DISTRACTED_DRIVING" />
+                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@Model[Model.Count() - 1].WILD_ANIMAL_RELATED" />
+                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@Model[Model.Count() - 1].DROWSY_DRIVING" />
+                            <li class="page-item">
+                                <button class="border-0 bg-transparent">
+                                    <a class="page-link">Next</a>
+                                </button>
+                                
+                            </li>
+                        </form>*@
+
+                        <form asp-controller="Home" asp-action="Output" asp-route-pg="@(pager.TotalPages)">
+                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@Model[Model.Count() - 1].CRASH_SEVERITY_ID" />
+                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@Model[Model.Count() - 1].CRASH_DATETIME" />
+                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@Model[Model.Count() - 1].COUNTY_NAME" />
+                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@Model[Model.Count() - 1].INTERSECTION_RELATED" />
+                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@Model[Model.Count() - 1].NIGHT_DARK_CONDITION" />
+                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@Model[Model.Count() - 1].ROADWAY_DEPARTURE" />
+                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@Model[Model.Count() - 1].DISTRACTED_DRIVING" />
+                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@Model[Model.Count() - 1].WILD_ANIMAL_RELATED" />
+                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@Model[Model.Count() - 1].DROWSY_DRIVING" />
+                            <li class="page-item">
+                                <button class="border-0 bg-transparent">
+                                    <a class="page-link">Last</a>
+                                </button>
+                                
+                            </li>
+                        </form>
+                    }
+                </ul>
+            }
+            @*<div page-blah="@Model.PageInfo" page-action="Output"></div>*@
+
+        </div>
 
     </div>
+
 </div>

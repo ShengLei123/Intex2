@@ -1,4 +1,5 @@
 ﻿using Intex2.Models;
+using Intex2.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -165,7 +166,7 @@ namespace Intex2.Controllers
             return View();
         }
 
-        public IActionResult Output(Utah_Crash c)
+        public IActionResult Output(Utah_Crash c, int pg)
         {
             var crash_list = _repo.Utah_Crash.ToList();
 
@@ -207,8 +208,31 @@ namespace Intex2.Controllers
                 crash_list = crash_list.Where(x => x.DROWSY_DRIVING == c.DROWSY_DRIVING).ToList();
             }
 
-            return View(crash_list);
+            //var x = new CrashViewModel
+            //{
+            //    Utah_Crash = crash_list,
+            //    PageInfo = new PageInfo
+            //    {
+            //        TotalNumCrashes = crash_list.Count(),
+            //        CrashesPerPage = 4,
+            //        CurrentPage = pg
+            //    }
+            //};
+            ViewBag.Output_Num = crash_list.Count();
+            ViewBag.Criteria = c;
+            const int pageSize = 4;
+            if (pg < 1)
+                pg = 1;
+            int recsCount = crash_list.Count();
+            var pager = new Pager(recsCount, pg, pageSize);
+            int recSkip = (pg - 1) * pageSize;
+            var data = crash_list.Skip(recSkip).Take(pager.PageSize).ToList();
+            this.ViewBag.Pager = pager;
+            data.Add(c);
+
+            return View(data);
         }
+        
         public IActionResult SearchByID(Utah_Crash c)
         {
             var crash_list = _repo.Utah_Crash

@@ -221,7 +221,7 @@
 <div class="container">
     <div class="row mt-4 pb-4">
         <div class="col-lg-12 col-sm-12 justify-content-center">
-            @if (pager.TotalPages > 0)
+            @if (pager.TotalPages > 1)
             {
                 <ul class="pagination justify-content-center">
 
@@ -231,7 +231,7 @@
                             <a class="page-link" asp-controller="Home" asp-action="Accidents" asp-route-pg="1">First</a>
                         </li>
                         <li>
-                            <a class="page-link" asp-controller="Home" asp-action="Index" asp-route-pg="@(pager.CurrentPage -1)">Previous</a>
+                            <a class="page-link" asp-controller="Home" asp-action="Accidents" asp-route-pg="@(pager.CurrentPage -1)">Previous</a>
                         </li>
                     }
 
