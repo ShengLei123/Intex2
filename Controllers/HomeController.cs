@@ -168,7 +168,6 @@ namespace Intex2.Controllers
         public IActionResult Output(Utah_Crash c)
         {
             var crash_list = _repo.Utah_Crash.ToList();
-            
 
             if (c.CRASH_SEVERITY_ID != null)
             {
@@ -210,6 +209,14 @@ namespace Intex2.Controllers
 
             return View(crash_list);
         }
+        public IActionResult SearchByID(Utah_Crash c)
+        {
+            var crash_list = _repo.Utah_Crash
+                .Where(x => x.CRASH_ID == c.CRASH_ID)
+                .ToList();
+
+            return View("Output", crash_list);
+        }
         
         public IActionResult Privacy()
         {
@@ -228,7 +235,7 @@ namespace Intex2.Controllers
         {
             var blah = _repo.Utah_Crash.ToList();
 
-            const int pageSize = 5;
+            const int pageSize = 4;
             if (pg < 1)
                 pg = 1;
 

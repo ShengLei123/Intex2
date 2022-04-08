@@ -1,5 +1,152 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Output Page";
 }
+@model List<Utah_Crash>
+
+<div class="container-fluid pt-5">
+    <div class="row ml-3 mr-3">
+        <div class="col-12">
+            <a class="btn btn-primary" asp-controller="Home" asp-action="Analytics">Back To Analytics</a>
+        </div>
+        
+        @if (Model.Count() == 0)
+        {
+            <div class="col-12 mt-3">
+                <div class="btn btn-block bg-light text-center text-dark">
+                    Sorry, we don't have the records that you are looking for. Grab a root beer and change your search/filters.
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (Utah_Crash c in Model)
+            {
+                <div class="col-lg-6 mt-4">
+                    <div class="card border-0">
+                        <div class="card-header bg-primary text-white font-weight-bold">
+                            Crash ID: @c.CRASH_ID
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Crash Datetime:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.CRASH_DATETIME.ToString()
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Route:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.ROUTE
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Milepoint:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.MILEPOINT
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Latitude:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.LAT_UTM_Y
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Longtitude:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.LONG_UTM_X
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 font-weight-bold">
+                                    Main Road:
+                                </div>
+                                <div class="col-lg-9 text-right">
+                                    @c.MAIN_ROAD_NAME
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    City:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.CITY
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    County Name:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.COUNTY_NAME
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 font-weight-bold">
+                                    Crash Severity:
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    @c.CRASH_SEVERITY_ID
+                                </div>
+                            </div>
+                            <div class="row">
+                                @if (c.WORK_ZONE_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Work Zone</div></div>}
+                                @if (c.PEDESTRIAN_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Pedestrian Involved</div></div>}
+                                @if (c.BICYCLIST_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Bicyclist Invovled</div></div>}
+                                @if (c.MOTORCYCLE_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Motocycle Involved</div></div>}
+                                @if (c.IMPROPER_RESTRAINT == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Improper Restraint</div></div>}
+                                @if (c.UNRESTRAINED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Unrestrained</div></div>}
+                                @if (c.DUI == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">DUI</div></div>}
+                                @if (c.INTERSECTION_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Intersection Related</div></div>}
+                                @if (c.WILD_ANIMAL_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Wild Animal</div></div>}
+                                @if (c.DOMESTIC_ANIMAL_RELATED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Domestic Animal</div></div>}
+                                @if (c.OVERTURN_ROLLOVER == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Overturn Rollover</div></div>}
+                                @if (c.COMMERCIAL_MOTOR_VEH_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Commericial Motor</div></div>}
+                                @if (c.TEENAGE_DRIVER_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Teenage Driver</div></div>}
+                                @if (c.OLDER_DRIVER_INVOLVED == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Older Driver</div></div>}
+                                @if (c.NIGHT_DARK_CONDITION == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Dark Condition</div></div>}
+                                @if (c.SINGLE_VEHICLE == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Single Vehicle</div></div>}
+                                @if (c.DISTRACTED_DRIVING == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Distracted Driving</div></div>}
+                                @if (c.DROWSY_DRIVING == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Drowst Driving</div></div>}
+                                @if (c.ROADWAY_DEPARTURE == 1)
+                                {<div class="mr-1"><div class="badge badge-warning">Roadway Departure</div></div>}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+
+
+    </div>
+</div>
