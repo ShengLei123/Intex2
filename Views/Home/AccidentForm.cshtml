@@ -11,51 +11,51 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
         <form method="post" asp-controller="Home" asp-action="AddAccident" class="mb-5">
-            <input asp-for="CRASH_ID" value="@Model.CRASH_ID" type="hidden" />
+            <input asp-for="CRASH_ID" value="@Model.CRASH_ID" type="hidden"/>
             <div class="form-group">
                 <label asp-for="CRASH_DATETIME">Date and Time: </label>
-                <input asp-for="CRASH_DATETIME" class="form-control" />
+                <input asp-for="CRASH_DATETIME" class="form-control" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="ROUTE">Route: </label>
-                <input asp-for="ROUTE" class="form-control" />
+                <input asp-for="ROUTE" class="form-control" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="MILEPOINT"> Milepoint: </label>
-                <input asp-for="MILEPOINT" class="form-control" />
+                <input asp-for="MILEPOINT" class="form-control" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="LAT_UTM_Y">Lattitude: </label>
-                <input asp-for="LAT_UTM_Y" class="form-control" />
+                <input asp-for="LAT_UTM_Y" class="form-control" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="LONG_UTM_X">Longitude: </label>
-                <input asp-for="LONG_UTM_X" class="form-control" />
+                <input asp-for="LONG_UTM_X" class="form-control" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="MAIN_ROAD_NAME">Main Road Name: </label>
-                <input asp-for="MAIN_ROAD_NAME" class="form-control" style="text-transform:uppercase"/>
+                <input asp-for="MAIN_ROAD_NAME" class="form-control" style="text-transform:uppercase" oninput="this.value = this.value.toUpperCase()" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="CITY">City: </label>
-                <input asp-for="CITY" class="form-control" style="text-transform:uppercase"/>
+                <input asp-for="CITY" class="form-control" style="text-transform:uppercase" oninput="this.value = this.value.toUpperCase()" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="COUNTY_NAME">County: </label>
-                <input asp-for="COUNTY_NAME" class="form-control" style="text-transform:uppercase"/>
+                <input asp-for="COUNTY_NAME" class="form-control" style="text-transform:uppercase" oninput="this.value = this.value.toUpperCase()" required/>
                 <br />
             </div>
             <div class="form-group">
                 <label asp-for="CRASH_SEVERITY_ID">Crash Severity (1-5): </label>
                 <select asp-for="CRASH_SEVERITY_ID" class="form-control">
-                    <option value="1">1</option>
+                    <option value="1" selected>1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="WORK_ZONE_RELATED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="WORK_ZONE_RELATED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="WORK_ZONE_RELATED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="PEDESTRIAN_INVOLVED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="PEDESTRIAN_INVOLVED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="PEDESTRIAN_INVOLVED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="BICYCLIST_INVOLVED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="BICYCLIST_INVOLVED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="BICYCLIST_INVOLVED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -102,7 +102,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="MOTORCYCLE_INVOLVED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="MOTORCYCLE_INVOLVED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="MOTORCYCLE_INVOLVED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="IMPROPER_RESTRAINT" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="IMPROPER_RESTRAINT" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="IMPROPER_RESTRAINT" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -124,7 +124,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="UNRESTRAINED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="UNRESTRAINED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="UNRESTRAINED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="DUI" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="DUI" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="DUI" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -146,7 +146,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="INTERSECTION_RELATED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="INTERSECTION_RELATED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="INTERSECTION_RELATED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -157,7 +157,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="WILD_ANIMAL_RELATED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="WILD_ANIMAL_RELATED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="WILD_ANIMAL_RELATED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>
@@ -167,7 +167,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="DOMESTIC_ANIMAL_RELATED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>
@@ -177,7 +177,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="OVERTURN_ROLLOVER" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="OVERTURN_ROLLOVER" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="OVERTURN_ROLLOVER" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -188,7 +188,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="COMMERCIAL_MOTOR_VEH_INVOLVED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -199,7 +199,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="TEENAGE_DRIVER_INVOLVED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>
@@ -209,7 +209,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="OLDER_DRIVER_INVOLVED" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>
@@ -219,7 +219,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="NIGHT_DARK_CONDITION" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="NIGHT_DARK_CONDITION" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="NIGHT_DARK_CONDITION" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 
                 <br />
@@ -230,7 +230,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="SINGLE_VEHICLE" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="SINGLE_VEHICLE" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="SINGLE_VEHICLE" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>
@@ -240,7 +240,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="DISTRACTED_DRIVING" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="DISTRACTED_DRIVING" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="DISTRACTED_DRIVING" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>
@@ -250,7 +250,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="DROWSY_DRIVING" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="DROWSY_DRIVING" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="DROWSY_DRIVING" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>
@@ -260,7 +260,7 @@
                 </div>
                 <div class="col-6">
                     <input asp-for="ROADWAY_DEPARTURE" type="radio" value="1" class="ml-5" />True
-                    <input asp-for="ROADWAY_DEPARTURE" type="radio" value="0" class="ml-5" />False
+                    <input asp-for="ROADWAY_DEPARTURE" type="radio" value="0" class="ml-5" checked/>False
                 </div>
                 <br />
             </div>

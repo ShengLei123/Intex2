@@ -298,15 +298,15 @@
                     @if (pager.CurrentPage > 1)
                     {
                         <form asp-controller="Home" asp-action="Output" asp-route-pg="1">
-                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@Model[Model.Count() - 1].CRASH_SEVERITY_ID" />
-                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@Model[Model.Count() - 1].CRASH_DATETIME" />
-                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@Model[Model.Count() - 1].COUNTY_NAME" />
-                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@Model[Model.Count() - 1].INTERSECTION_RELATED" />
-                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@Model[Model.Count() - 1].NIGHT_DARK_CONDITION" />
-                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@Model[Model.Count() - 1].ROADWAY_DEPARTURE" />
-                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@Model[Model.Count() - 1].DISTRACTED_DRIVING" />
-                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@Model[Model.Count() - 1].WILD_ANIMAL_RELATED" />
-                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@Model[Model.Count() - 1].DROWSY_DRIVING" />
+                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@ViewBag.Criteria.CRASH_SEVERITY_ID" />
+                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@ViewBag.Criteria.CRASH_DATETIME" />
+                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@ViewBag.Criteria.COUNTY_NAME" />
+                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@ViewBag.Criteria.INTERSECTION_RELATED" />
+                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@ViewBag.Criteria.NIGHT_DARK_CONDITION" />
+                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@ViewBag.Criteria.ROADWAY_DEPARTURE" />
+                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@ViewBag.Criteria.DISTRACTED_DRIVING" />
+                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@ViewBag.Criteria.WILD_ANIMAL_RELATED" />
+                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@ViewBag.Criteria.DROWSY_DRIVING" />
                             <li class="page-item">
                                 <button class="border-0 bg-transparent"><a class="page-link">First</a></button> 
                             </li>
@@ -318,15 +318,15 @@
                     @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
                     {
                         <form asp-controller="Home" asp-action="Output" asp-route-pg="@pge">
-                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@Model[Model.Count() - 1].CRASH_SEVERITY_ID" />
-                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@Model[Model.Count() - 1].CRASH_DATETIME" />
-                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@Model[Model.Count() - 1].COUNTY_NAME" />
-                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@Model[Model.Count() - 1].INTERSECTION_RELATED" />
-                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@Model[Model.Count() - 1].NIGHT_DARK_CONDITION" />
-                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@Model[Model.Count() - 1].ROADWAY_DEPARTURE" />
-                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@Model[Model.Count() - 1].DISTRACTED_DRIVING" />
-                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@Model[Model.Count() - 1].WILD_ANIMAL_RELATED" />
-                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@Model[Model.Count() - 1].DROWSY_DRIVING" />
+                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@ViewBag.Criteria.CRASH_SEVERITY_ID" />
+                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@ViewBag.Criteria.CRASH_DATETIME" />
+                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@ViewBag.Criteria.COUNTY_NAME" />
+                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@ViewBag.Criteria.INTERSECTION_RELATED" />
+                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@ViewBag.Criteria.NIGHT_DARK_CONDITION" />
+                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@ViewBag.Criteria.ROADWAY_DEPARTURE" />
+                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@ViewBag.Criteria.DISTRACTED_DRIVING" />
+                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@ViewBag.Criteria.WILD_ANIMAL_RELATED" />
+                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@ViewBag.Criteria.DROWSY_DRIVING" />
                             <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
                                 <button class="border-0 bg-transparent"><a class="page-link">@pge</a></button> 
                             </li>
@@ -355,15 +355,15 @@
                         </form>*@
 
                         <form asp-controller="Home" asp-action="Output" asp-route-pg="@(pager.TotalPages)">
-                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@Model[Model.Count() - 1].CRASH_SEVERITY_ID" />
-                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@Model[Model.Count() - 1].CRASH_DATETIME" />
-                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@Model[Model.Count() - 1].COUNTY_NAME" />
-                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@Model[Model.Count() - 1].INTERSECTION_RELATED" />
-                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@Model[Model.Count() - 1].NIGHT_DARK_CONDITION" />
-                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@Model[Model.Count() - 1].ROADWAY_DEPARTURE" />
-                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@Model[Model.Count() - 1].DISTRACTED_DRIVING" />
-                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@Model[Model.Count() - 1].WILD_ANIMAL_RELATED" />
-                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@Model[Model.Count() - 1].DROWSY_DRIVING" />
+                            <input hidden id="CRASH_SEVERITY_ID" name="CRASH_SEVERITY_ID" value="@ViewBag.Criteria.CRASH_SEVERITY_ID" />
+                            <input hidden id="CRASH_DATETIME" name="CRASH_DATETIME" value="@ViewBag.Criteria.CRASH_DATETIME" />
+                            <input hidden id="COUNTY_NAME" name="COUNTY_NAME" value="@ViewBag.Criteria.COUNTY_NAME" />
+                            <input hidden id="INTERSECTION_RELATED" name="INTERSECTION_RELATED" value="@ViewBag.Criteria.INTERSECTION_RELATED" />
+                            <input hidden id="NIGHT_DARK_CONDITION" name="NIGHT_DARK_CONDITION" value="@ViewBag.Criteria.NIGHT_DARK_CONDITION" />
+                            <input hidden id="ROADWAY_DEPARTURE" name="ROADWAY_DEPARTURE" value="@ViewBag.Criteria.ROADWAY_DEPARTURE" />
+                            <input hidden id="DISTRACTED_DRIVING" name="DISTRACTED_DRIVING" value="@ViewBag.Criteria.DISTRACTED_DRIVING" />
+                            <input hidden id="WILD_ANIMAL_RELATED" name="WILD_ANIMAL_RELATED" value="@ViewBag.Criteria.WILD_ANIMAL_RELATED" />
+                            <input hidden id="DROWSY_DRIVING" name="DROWSY_DRIVING" value="@ViewBag.Criteria.DROWSY_DRIVING" />
                             <li class="page-item">
                                 <button class="border-0 bg-transparent">
                                     <a class="page-link">Last</a>

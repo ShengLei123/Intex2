@@ -177,7 +177,7 @@ namespace Intex2.Controllers
             if (c.CRASH_DATETIME != null)
             {
                 DateTime last_day_the_year = new DateTime(c.CRASH_DATETIME.Value.Year + 1, 1, 1);
-                crash_list = crash_list.Where(x => x.CRASH_DATETIME > c.CRASH_DATETIME && x.CRASH_DATETIME < last_day_the_year).ToList();
+                crash_list = crash_list.Where(x => x.CRASH_DATETIME >= c.CRASH_DATETIME && x.CRASH_DATETIME < last_day_the_year).ToList();
             }
             if (c.COUNTY_NAME != null)
             {
@@ -228,7 +228,8 @@ namespace Intex2.Controllers
             int recSkip = (pg - 1) * pageSize;
             var data = crash_list.Skip(recSkip).Take(pager.PageSize).ToList();
             this.ViewBag.Pager = pager;
-            data.Add(c);
+            //data.Add(c);
+            ViewBag.Criteria = c;
 
             return View(data);
         }
